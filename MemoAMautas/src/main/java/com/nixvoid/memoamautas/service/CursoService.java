@@ -1,8 +1,8 @@
 package com.nixvoid.memoamautas.service;
 
-import com.nixvoid.memoamautas.dto.Curso;
-import com.nixvoid.memoamautas.dto.Modulo;
-import com.nixvoid.memoamautas.dto.Sesion;
+import com.nixvoid.memoamautas.dto.courses.Curso;
+import com.nixvoid.memoamautas.dto.courses.Modulo;
+import com.nixvoid.memoamautas.dto.courses.Sesion;
 
 import java.util.List;
 

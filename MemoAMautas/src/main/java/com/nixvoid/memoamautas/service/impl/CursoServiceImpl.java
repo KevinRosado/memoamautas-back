@@ -1,8 +1,8 @@
 package com.nixvoid.memoamautas.service.impl;
 
-import com.nixvoid.memoamautas.dto.Curso;
-import com.nixvoid.memoamautas.dto.Modulo;
-import com.nixvoid.memoamautas.dto.Sesion;
+import com.nixvoid.memoamautas.dto.courses.Curso;
+import com.nixvoid.memoamautas.dto.courses.Modulo;
+import com.nixvoid.memoamautas.dto.courses.Sesion;
 import com.nixvoid.memoamautas.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

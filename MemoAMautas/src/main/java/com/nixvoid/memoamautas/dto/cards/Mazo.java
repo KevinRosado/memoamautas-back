@@ -1,4 +1,4 @@
-package com.nixvoid.memoamautas.dto;
+package com.nixvoid.memoamautas.dto.cards;
 
 import lombok.Data;
 

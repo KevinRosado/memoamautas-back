@@ -1,11 +1,12 @@
 package com.nixvoid.memoamautas.repository;
 
-import com.nixvoid.memoamautas.dto.LoginRequest;
-import com.nixvoid.memoamautas.dto.LoginResponse;
-import com.nixvoid.memoamautas.dto.RegisterRequest;
-import com.nixvoid.memoamautas.dto.RegisterResponse;
+import com.nixvoid.memoamautas.dto.access.LoginRequest;
+import com.nixvoid.memoamautas.dto.access.LoginResponse;
+import com.nixvoid.memoamautas.dto.access.RegisterRequest;
+import com.nixvoid.memoamautas.dto.access.RegisterResponse;
 
 public interface UsuarioRepository {
     LoginResponse loginUsuario(LoginRequest loginRequest);
     RegisterResponse registerUsuario(RegisterRequest registerRequest);
+    LoginRequest ForgetPassword(LoginRequest loginRequest);
 }
