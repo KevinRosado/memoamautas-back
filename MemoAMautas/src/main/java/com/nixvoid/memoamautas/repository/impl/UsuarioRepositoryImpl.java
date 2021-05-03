@@ -26,33 +26,28 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public LoginResponse loginUsuario(LoginRequest loginRequest) {
         LoginResponse loginResponse = new LoginResponse();
-        String sql = "SELECT nombre, ape_pat, ape_mat, fecha_nac, rol_persona  from memo_amautas.persona where " +
-                " id_persona in (select cod_persona from usuario where username = ? and contrasenia = ?)";
-        String sql1 = "SELECT nombre_rol from memo_amautas.rol where id_rol in (SELECT rol_persona from persona where id_persona = ?)";
+        String sql = "with t1 as (SELECT * from memo_amautas.persona where id_persona in (select cod_persona from memo_amautas.usuario where username = ? and contrasenia = ?))" +
+                "select t1.*, memo_amautas.rol.nombre_rol from t1 inner join memo_amautas.rol on t1.rol_persona= memo_amautas.rol.id_rol";
+
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
             sentencia.setString(1, loginRequest.getUsuario());
             sentencia.setString(2, loginRequest.getPassword());
             ResultSet resultado = sentencia.executeQuery();
-            PreparedStatement ps = cn.prepareStatement(sql1);
-            ps.setString(1, resultado.getString("rol_persona"));
-            ResultSet resultSet = ps.executeQuery();
             while (resultado.next()){
                 loginResponse.setNombre(resultado.getString("nombre"));
                 loginResponse.setApe_pat(resultado.getString("ape_pat"));
                 loginResponse.setApe_mat(resultado.getString("ape_mat"));
                 loginResponse.setFecha_nac(resultado.getDate("fecha_nac"));
-                loginResponse.setRol(resultSet.getString("nombre_rol"));
                 loginResponse.setUsername(loginRequest.getUsuario());
                 loginResponse.setPassword(loginRequest.getPassword());
+                loginResponse.setRol(resultado.getString("nombre_rol"));
             }
-            if(loginResponse.getUsername() == null){
-                throw new SQLException("");
-            }
+            resultado.close();
             cn.close();
         }catch (SQLException throwables){
-            throw new ApiRequestException("USERNAME_NOT_EXISTS");
+            throw new ApiRequestException("USER_NOT_EXISTS");
         }
         return loginResponse;
     }
@@ -65,7 +60,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         String sql2 = "with t1 as (select * from memo_amautas.usuario where username = ? and contrasenia = ?) \n" +
                 "select memo_amautas.persona.*, t1.username, t1.contrasenia from t1 \n" +
                 "inner join memo_amautas.persona on t1.cod_persona = memo_amautas.persona.id_persona;";
-        String sql3 = "SELECT nombre_rol from memo_amautas.rol where id_rol in (SELECT rol_persona from persona where id_persona = ?)";
+        String sql3 = "SELECT nombre_rol from memo_amautas.rol where id_rol in (SELECT rol_persona from memo_amautas.persona where id_persona = ?)";
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement ps = cn.prepareStatement(sql);
