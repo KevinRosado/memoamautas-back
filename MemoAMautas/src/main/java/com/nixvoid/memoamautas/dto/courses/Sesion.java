@@ -8,5 +8,5 @@ public class Sesion {
     private String id;
     private String id_modulo;
     private String tema;
-    private String orden;
+    private Integer orden;
 }

@@ -1,5 +1,7 @@
 package com.nixvoid.memoamautas.controller;
 
+import com.nixvoid.memoamautas.domain.CursoEtiquetado;
+import com.nixvoid.memoamautas.dto.courses.Etiqueta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,24 +15,24 @@ import com.nixvoid.memoamautas.service.CursoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cursos")
+@RequestMapping(value = "", consumes = "application/json;charset=utf-8")
 public class CursoController {
     @Autowired
     private CursoService cursoService;
 
-    @GetMapping("/curso")
-    public List<Curso> obtenerCurso(@RequestBody Curso curso){
-        return cursoService.obtenerCurso(curso);
+    @GetMapping("/cursos")
+    public CursoEtiquetado obtenerCursos(@RequestBody Etiqueta etiqueta){
+        return cursoService.obtenerCursos(etiqueta);
     }
 
-    @GetMapping("/modulo")
-    public List<Modulo> obtenerModulo(@RequestBody Curso curso){
-        return cursoService.obtenerModulo(curso);
+    @GetMapping("/curso")
+    public Curso obtenerCursoDetails(@RequestBody Curso curso){
+        return cursoService.obtenerCursoDetails(curso);
     }
 
     @GetMapping("/sesion")
-    public List<Sesion> obtenerSesion(@RequestBody Curso curso){
-        return cursoService.obtenerSesion(curso);
+    public Modulo obtenerSesiones(@RequestBody Modulo modulo){
+        return cursoService.obtenerSesiones(modulo);
     }
 
 }

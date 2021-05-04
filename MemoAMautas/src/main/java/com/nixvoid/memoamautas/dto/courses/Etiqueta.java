@@ -6,4 +6,5 @@ import lombok.Data;
 public class Etiqueta {
     private String id;
     private String nombre;
+    private String tipo;
 }

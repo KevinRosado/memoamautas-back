@@ -1,6 +1,8 @@
 package com.nixvoid.memoamautas.service.impl;
 
+import com.nixvoid.memoamautas.domain.CursoEtiquetado;
 import com.nixvoid.memoamautas.dto.courses.Curso;
+import com.nixvoid.memoamautas.dto.courses.Etiqueta;
 import com.nixvoid.memoamautas.dto.courses.Modulo;
 import com.nixvoid.memoamautas.dto.courses.Sesion;
 import com.nixvoid.memoamautas.repository.CursoRepository;
@@ -19,17 +21,17 @@ public class CursoServiceImpl implements CursoService {
     private CursoRepository cursoRepository;
 
     @Override
-    public List<Curso> obtenerCurso(Curso curso) {
-        return cursoRepository.obtenerCurso(curso);
+    public CursoEtiquetado obtenerCursos(Etiqueta etiqueta) {
+        return cursoRepository.obtenerCursos(etiqueta);
     }
 
     @Override
-    public List<Modulo> obtenerModulo(Curso curso) {
-        return cursoRepository.obtenerModulo(curso);
+    public Curso obtenerCursoDetails(Curso curso) {
+        return cursoRepository.obtenerCursoDetails(curso);
     }
 
     @Override
-    public List<Sesion> obtenerSesion(Curso curso) {
-        return cursoRepository.obtenerSesion(curso);
+    public Modulo obtenerSesiones(Modulo modulo) {
+        return cursoRepository.obtenerSesiones(modulo);
     }
 }

@@ -3,7 +3,7 @@ create table memo_amautas.rol(
                                  nombre_rol varchar(8)
 );
 create table memo_amautas.persona(
-                                     id_persona SERIAL primary key,
+                                     id_persona SERIAL int primary key,
                                      rol_persona varchar(8),
                                      nombre varchar(30),
                                      ape_pat varchar(30),
@@ -13,18 +13,13 @@ create table memo_amautas.persona(
 );
 create table memo_amautas.etiqueta(
                                       id_etiqueta varchar(5) primary key,
-                                      nombre_etiqueta varchar(20)
-);
-create table memo_amautas.materia(
-                                     id_materia varchar(5) primary key,
-                                     nombre_materia varchar(60)
+                                      nombre_etiqueta varchar(30),
+                                      tipo_etiqueta varchar(30)
 );
 create table memo_amautas.curso(
                                    id_curso varchar(8) primary key,
                                    nombre_curso varchar(200),
-                                   creditos int,
-                                   cod_materia varchar (5),
-                                   foreign key (cod_materia) references memo_amautas.materia(id_materia)
+                                   creditos int
 );
 create table memo_amautas.modulo(
                                     id_modulo varchar(8) primary key,
