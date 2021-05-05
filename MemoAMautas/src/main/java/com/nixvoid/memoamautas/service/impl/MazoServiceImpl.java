@@ -2,6 +2,8 @@ package com.nixvoid.memoamautas.service.impl;
 
 import com.nixvoid.memoamautas.dto.cards.Mazo;
 import com.nixvoid.memoamautas.dto.courses.Curso;
+import com.nixvoid.memoamautas.dto.courses.Modulo;
+import com.nixvoid.memoamautas.dto.courses.Sesion;
 import com.nixvoid.memoamautas.dto.user.Persona;
 import com.nixvoid.memoamautas.repository.MazoRepository;
 import com.nixvoid.memoamautas.service.MazoService;
@@ -26,5 +28,15 @@ public class MazoServiceImpl implements MazoService {
     @Override
     public List<Mazo> obtenerMazos(Curso curso) {
         return mazoRepository.obtenerMazos(curso);
+    }
+
+    @Override
+    public List<Mazo> getByCurso(Curso curso) {
+        return mazoRepository.getByCurso(curso);
+    }
+
+    @Override
+    public List<Mazo> getBySesion(Sesion sesion) {
+        return mazoRepository.getBySesion(sesion);
     }
 }
