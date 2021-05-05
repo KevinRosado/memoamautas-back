@@ -57,9 +57,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         RegisterResponse registerResponse = new RegisterResponse();
         String sql = "insert into memo_amautas.usuario(username,contrasenia) values (?,?)";
         String sql1 = "insert into memo_amautas.persona(nombre, ape_pat, ape_mat, fecha_nac, rol_persona) values (?,?,?,?,?)";
-        String sql2 = "with t1 as (select * from memo_amautas.usuario where username = ? and contrasenia = ?) \n" +
-                "select memo_amautas.persona.*, t1.username, t1.contrasenia from t1 \n" +
-                "inner join memo_amautas.persona on t1.cod_persona = memo_amautas.persona.id_persona;";
+        String sql2 = "with t1 as (select * from memo_amautas.usuario where username = ? and contrasenia = ?) " +
+                "select memo_amautas.persona.*, t1.username, t1.contrasenia from t1 " +
+                "inner join memo_amautas.persona on t1.cod_persona = memo_amautas.persona.id_persona ";
         String sql3 = "SELECT nombre_rol from memo_amautas.rol where id_rol in (SELECT rol_persona from memo_amautas.persona where id_persona = ?)";
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();

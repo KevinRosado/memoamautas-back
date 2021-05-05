@@ -1,6 +1,5 @@
 package com.nixvoid.memoamautas.dto.courses;
 
-
 import lombok.Data;
 
 import java.util.List;

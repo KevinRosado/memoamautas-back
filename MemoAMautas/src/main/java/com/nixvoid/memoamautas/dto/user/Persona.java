@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class Persona {
+    private String id;
     private String nombre;
     private String ape_pat;
     private String ape_mat;

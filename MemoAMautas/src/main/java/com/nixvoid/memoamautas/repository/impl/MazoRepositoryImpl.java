@@ -2,7 +2,6 @@ package com.nixvoid.memoamautas.repository.impl;
 
 import com.nixvoid.memoamautas.dto.cards.Mazo;
 import com.nixvoid.memoamautas.dto.courses.Curso;
-import com.nixvoid.memoamautas.dto.courses.Modulo;
 import com.nixvoid.memoamautas.dto.courses.Sesion;
 import com.nixvoid.memoamautas.dto.user.Persona;
 import com.nixvoid.memoamautas.repository.MazoRepository;
@@ -27,7 +26,36 @@ public class MazoRepositoryImpl implements MazoRepository {
 
     @Override
     public List<Mazo> getByAutor(Persona persona) {
-        return null;
+        List<Mazo> mazos = new ArrayList<>();
+        String sql = "with t2 as (with t1 as (select * from memo_amautas.mazo where cod_autor = ?) " +
+                "select t1.*, mazo_general.cod_curso, mazo_general.cod_sesion from t1 " +
+                "inner join memo_amautas.mazo_general on mazo_general.cod_mazo = t1.id_mazo) " +
+                "select t2.*, curso.nombre_curso from t2 inner join memo_amautas.curso on curso.id_curso = t2.cod_curso";
+        try{
+            Connection cn = jdbcTemplate.getDataSource().getConnection();
+            PreparedStatement sentencia = cn.prepareStatement(sql);
+            sentencia.setString(1, persona.getId());
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()){
+                Mazo mazo = new Mazo();
+                mazo.setId(resultado.getInt("cod_mazo"));
+                mazo.setNombre(resultado.getString("nombre_mazo"));
+                mazo.setCant_visitas(resultado.getInt("cant_visitas"));
+                mazo.setCant_votos(resultado.getInt("cant_votos"));
+                mazo.setCod_autor(resultado.getInt("cod_autor"));
+                mazo.setNombre_autor(resultado.getString("nombre"));
+                mazo.setCod_curso(resultado.getString("cod_curso"));
+                mazo.setNombre_curso(resultado.getString("nombre_curso"));
+                mazo.setEs_default(resultado.getBoolean("mazo_default"));
+                mazo.setCod_sesion(resultado.getString("cod_sesion"));
+                mazos.add(mazo);
+            }
+            resultado.close();
+            cn.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return mazos;
     }
 
     @Override
@@ -43,7 +71,7 @@ public class MazoRepositoryImpl implements MazoRepository {
                 "inner join t1 on t1.id_curso = mazo_general.cod_curso) " +
                 "select t2.*, mazo.cod_autor, mazo.nombre_mazo, mazo.cant_vistas, mazo.cant_votos, mazo.cod_autor, mazo.mazo_default from t2 " +
                 "inner join memo_amautas.mazo on t2.cod_mazo = mazo.id_mazo) " +
-                "select persona.nombre, t3.* from t3 inner join memo_amautas.persona on t3.cod_autor = persona.id_persona";
+                "select persona.nombre, t3.* from t3 inner join memo_amautas.persona on t3.cod_autor = persona.id_persona order by t3.cant_votos";
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
@@ -73,6 +101,32 @@ public class MazoRepositoryImpl implements MazoRepository {
 
     @Override
     public List<Mazo> getBySesion(Sesion sesion) {
-        return null;
+        List<Mazo> mazos = new ArrayList<>();
+        String sql = "with t1 as (select cod_mazo, cod_sesion, cod_curso from memo_amautas.mazo_general where cod_sesion = ?) " +
+                "select t1.cod_sesion, t1.cod_curso, mazo.* from t1 inner join memo_amautas.mazo on mazo.id_mazo = t1.cod_mazo";
+        try{
+            Connection cn = jdbcTemplate.getDataSource().getConnection();
+            PreparedStatement sentencia = cn.prepareStatement(sql);
+            sentencia.setString(1, sesion.getId());
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()){
+                Mazo mazo = new Mazo();
+                mazo.setId(resultado.getInt("cod_mazo"));
+                mazo.setNombre(resultado.getString("nombre_mazo"));
+                mazo.setCant_visitas(resultado.getInt("cant_visitas"));
+                mazo.setCant_votos(resultado.getInt("cant_votos"));
+                mazo.setCod_autor(resultado.getInt("cod_autor"));
+                mazo.setNombre_autor(resultado.getString("nombre"));
+                mazo.setCod_curso(resultado.getString("cod_curso"));
+                mazo.setEs_default(resultado.getBoolean("mazo_default"));
+                mazo.setCod_sesion(resultado.getString("cod_sesion"));
+                mazos.add(mazo);
+            }
+            resultado.close();
+            cn.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return mazos;
     }
 }

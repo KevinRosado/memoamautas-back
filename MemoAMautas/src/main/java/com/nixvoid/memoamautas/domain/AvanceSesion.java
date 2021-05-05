@@ -1,4 +1,4 @@
-package com.nixvoid.memoamautas.dto.courses;
+package com.nixvoid.memoamautas.domain;
 
 import lombok.Data;
 
