@@ -6,8 +6,8 @@ import com.nixvoid.memoamautas.dto.access.RegisterRequest;
 import com.nixvoid.memoamautas.dto.access.RegisterResponse;
 
 
-public interface UsuarioService {
-        RegisterResponse registerUsuario(RegisterRequest registerRequest);
-        LoginResponse loginUsuario(LoginRequest loginRequest);
+public interface UserService {
+        RegisterResponse registerUser(RegisterRequest registerRequest);
+        LoginResponse loginUser(LoginRequest loginRequest);
         LoginRequest ForgetPassword(LoginRequest loginRequest);
 }

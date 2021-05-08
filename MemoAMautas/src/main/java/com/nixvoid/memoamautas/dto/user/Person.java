@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Persona {
+public class Person {
     private String id;
     private String nombre;
     private String ape_pat;

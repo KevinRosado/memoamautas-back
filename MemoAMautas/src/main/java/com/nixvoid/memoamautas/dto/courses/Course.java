@@ -1,16 +1,16 @@
 package com.nixvoid.memoamautas.dto.courses;
 
-import com.nixvoid.memoamautas.dto.user.Persona;
+import com.nixvoid.memoamautas.dto.user.Person;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class Curso {
+public class Course {
     private String id;
     private String nombre;
     private Integer creditos;
     private String descripcion;
-    private List<Persona> profesores;
-    private List<Modulo> modulos;
+    private List<Person> profesores;
+    private List<Module> modules;
 }

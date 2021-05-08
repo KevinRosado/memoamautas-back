@@ -3,7 +3,7 @@ package com.nixvoid.memoamautas.dto.cards;
 import lombok.Data;
 
 @Data
-public class Mazo {
+public class Deck {
     private Integer id;
     private String nombre;
     private Integer cant_visitas;

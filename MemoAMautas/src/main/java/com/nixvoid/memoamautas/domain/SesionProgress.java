@@ -3,7 +3,7 @@ package com.nixvoid.memoamautas.domain;
 import lombok.Data;
 
 @Data
-public class AvanceSesion {
+public class SesionProgress {
     private String id_avance;
     private String id_persona;
     private String id_sesion;

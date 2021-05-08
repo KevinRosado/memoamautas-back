@@ -1,10 +1,10 @@
 package com.nixvoid.memoamautas.repository.impl;
 
-import com.nixvoid.memoamautas.dto.cards.Mazo;
-import com.nixvoid.memoamautas.dto.courses.Curso;
-import com.nixvoid.memoamautas.dto.courses.Sesion;
-import com.nixvoid.memoamautas.dto.user.Persona;
-import com.nixvoid.memoamautas.repository.MazoRepository;
+import com.nixvoid.memoamautas.dto.cards.Deck;
+import com.nixvoid.memoamautas.dto.courses.Course;
+import com.nixvoid.memoamautas.dto.courses.Session;
+import com.nixvoid.memoamautas.dto.user.Person;
+import com.nixvoid.memoamautas.repository.DeckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,14 +19,14 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class MazoRepositoryImpl implements MazoRepository {
+public class DeckRepositoryImpl implements DeckRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<Mazo> getByAutor(Persona persona) {
-        List<Mazo> mazos = new ArrayList<>();
+    public List<Deck> getByAutor(Person person) {
+        List<Deck> decks = new ArrayList<>();
         String sql = "with t2 as (with t1 as (select * from memo_amautas.mazo where cod_autor = ?) " +
                 "select t1.*, mazo_general.cod_curso, mazo_general.cod_sesion from t1 " +
                 "inner join memo_amautas.mazo_general on mazo_general.cod_mazo = t1.id_mazo) " +
@@ -34,38 +34,38 @@ public class MazoRepositoryImpl implements MazoRepository {
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, persona.getId());
+            sentencia.setString(1, person.getId());
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
-                Mazo mazo = new Mazo();
-                mazo.setId(resultado.getInt("cod_mazo"));
-                mazo.setNombre(resultado.getString("nombre_mazo"));
-                mazo.setCant_visitas(resultado.getInt("cant_visitas"));
-                mazo.setCant_votos(resultado.getInt("cant_votos"));
-                mazo.setCod_autor(resultado.getInt("cod_autor"));
-                mazo.setNombre_autor(resultado.getString("nombre"));
-                mazo.setCod_curso(resultado.getString("cod_curso"));
-                mazo.setNombre_curso(resultado.getString("nombre_curso"));
-                mazo.setEs_default(resultado.getBoolean("mazo_default"));
-                mazo.setCod_sesion(resultado.getString("cod_sesion"));
-                mazos.add(mazo);
+                Deck deck = new Deck();
+                deck.setId(resultado.getInt("cod_mazo"));
+                deck.setNombre(resultado.getString("nombre_mazo"));
+                deck.setCant_visitas(resultado.getInt("cant_visitas"));
+                deck.setCant_votos(resultado.getInt("cant_votos"));
+                deck.setCod_autor(resultado.getInt("cod_autor"));
+                deck.setNombre_autor(resultado.getString("nombre"));
+                deck.setCod_curso(resultado.getString("cod_curso"));
+                deck.setNombre_curso(resultado.getString("nombre_curso"));
+                deck.setEs_default(resultado.getBoolean("mazo_default"));
+                deck.setCod_sesion(resultado.getString("cod_sesion"));
+                decks.add(deck);
             }
             resultado.close();
             cn.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return mazos;
+        return decks;
     }
 
     @Override
-    public List<Mazo> obtenerMazos(Curso curso) {
+    public List<Deck> obtenerMazos(Course course) {
         return null;
     }
 
     @Override
-    public List<Mazo> getByCurso(Curso curso) {
-        List<Mazo> mazos = new ArrayList<>();
+    public List<Deck> getByCurso(Course course) {
+        List<Deck> decks = new ArrayList<>();
         String sql = "with t3 as (with t2 as (with t1 as (select nombre_curso, id_curso from memo_amautas.curso where id_curso = ?) " +
                 "select mazo_general.cod_curso, mazo_general.cod_mazo, mazo_general.cod_sesion, t1.nombre_curso from memo_amautas.mazo_general " +
                 "inner join t1 on t1.id_curso = mazo_general.cod_curso) " +
@@ -75,58 +75,63 @@ public class MazoRepositoryImpl implements MazoRepository {
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, curso.getId());
+            sentencia.setString(1, course.getId());
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
-                Mazo mazo = new Mazo();
-                mazo.setId(resultado.getInt("cod_mazo"));
-                mazo.setNombre(resultado.getString("nombre_mazo"));
-                mazo.setCant_visitas(resultado.getInt("cant_visitas"));
-                mazo.setCant_votos(resultado.getInt("cant_votos"));
-                mazo.setCod_autor(resultado.getInt("cod_autor"));
-                mazo.setNombre_autor(resultado.getString("nombre"));
-                mazo.setCod_curso(resultado.getString("cod_curso"));
-                mazo.setNombre_curso(resultado.getString("nombre_curso"));
-                mazo.setEs_default(resultado.getBoolean("mazo_default"));
-                mazo.setCod_sesion(resultado.getString("cod_sesion"));
-                mazos.add(mazo);
+                Deck deck = new Deck();
+                deck.setId(resultado.getInt("cod_mazo"));
+                deck.setNombre(resultado.getString("nombre_mazo"));
+                deck.setCant_visitas(resultado.getInt("cant_visitas"));
+                deck.setCant_votos(resultado.getInt("cant_votos"));
+                deck.setCod_autor(resultado.getInt("cod_autor"));
+                deck.setNombre_autor(resultado.getString("nombre"));
+                deck.setCod_curso(resultado.getString("cod_curso"));
+                deck.setNombre_curso(resultado.getString("nombre_curso"));
+                deck.setEs_default(resultado.getBoolean("mazo_default"));
+                deck.setCod_sesion(resultado.getString("cod_sesion"));
+                decks.add(deck);
             }
             resultado.close();
             cn.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return mazos;
+        return decks;
     }
 
     @Override
-    public List<Mazo> getBySesion(Sesion sesion) {
-        List<Mazo> mazos = new ArrayList<>();
+    public List<Deck> getBySesion(Session session) {
+        List<Deck> decks = new ArrayList<>();
         String sql = "with t1 as (select cod_mazo, cod_sesion, cod_curso from memo_amautas.mazo_general where cod_sesion = ?) " +
                 "select t1.cod_sesion, t1.cod_curso, mazo.* from t1 inner join memo_amautas.mazo on mazo.id_mazo = t1.cod_mazo";
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, sesion.getId());
+            sentencia.setString(1, session.getId());
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
-                Mazo mazo = new Mazo();
-                mazo.setId(resultado.getInt("cod_mazo"));
-                mazo.setNombre(resultado.getString("nombre_mazo"));
-                mazo.setCant_visitas(resultado.getInt("cant_visitas"));
-                mazo.setCant_votos(resultado.getInt("cant_votos"));
-                mazo.setCod_autor(resultado.getInt("cod_autor"));
-                mazo.setNombre_autor(resultado.getString("nombre"));
-                mazo.setCod_curso(resultado.getString("cod_curso"));
-                mazo.setEs_default(resultado.getBoolean("mazo_default"));
-                mazo.setCod_sesion(resultado.getString("cod_sesion"));
-                mazos.add(mazo);
+                Deck deck = new Deck();
+                deck.setId(resultado.getInt("cod_mazo"));
+                deck.setNombre(resultado.getString("nombre_mazo"));
+                deck.setCant_visitas(resultado.getInt("cant_visitas"));
+                deck.setCant_votos(resultado.getInt("cant_votos"));
+                deck.setCod_autor(resultado.getInt("cod_autor"));
+                deck.setNombre_autor(resultado.getString("nombre"));
+                deck.setCod_curso(resultado.getString("cod_curso"));
+                deck.setEs_default(resultado.getBoolean("mazo_default"));
+                deck.setCod_sesion(resultado.getString("cod_sesion"));
+                decks.add(deck);
             }
             resultado.close();
             cn.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return mazos;
+        return decks;
+    }
+
+    @Override
+    public void crearMazo(Deck deck) {
+
     }
 }

@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class MemoAMautasApplication {
+public class MemoAmautasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MemoAMautasApplication.class, args);
+		SpringApplication.run(MemoAmautasApplication.class, args);
 
 	}
 }

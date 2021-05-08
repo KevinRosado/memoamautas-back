@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class CursoMatriculado {
+public class EnrolledCourse {
     private Integer id_matriculado;
     private String id_curso;
     private String nombre_curso;

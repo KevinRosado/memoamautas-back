@@ -4,8 +4,8 @@ import com.nixvoid.memoamautas.dto.access.LoginRequest;
 import com.nixvoid.memoamautas.dto.access.LoginResponse;
 import com.nixvoid.memoamautas.dto.access.RegisterRequest;
 import com.nixvoid.memoamautas.dto.access.RegisterResponse;
-import com.nixvoid.memoamautas.repository.UsuarioRepository;
-import com.nixvoid.memoamautas.service.UsuarioService;
+import com.nixvoid.memoamautas.repository.UserRepository;
+import com.nixvoid.memoamautas.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,24 +13,24 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class UsuarioServiceImpl implements UsuarioService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UserRepository userRepository;
 
     @Override
-    public RegisterResponse registerUsuario(RegisterRequest registerRequest) {
-        return this.usuarioRepository.registerUsuario(registerRequest);
+    public RegisterResponse registerUser(RegisterRequest registerRequest) {
+        return this.userRepository.registerUsuario(registerRequest);
     }
 
     @Override
-    public LoginResponse loginUsuario(LoginRequest loginRequest) {
-        return this.usuarioRepository.loginUsuario(loginRequest);
+    public LoginResponse loginUser(LoginRequest loginRequest) {
+        return this.userRepository.loginUsuario(loginRequest);
     }
 
     @Override
     public LoginRequest ForgetPassword(LoginRequest loginRequest) {
-        return this.usuarioRepository.ForgetPassword(loginRequest);
+        return this.userRepository.ForgetPassword(loginRequest);
     }
 
 }

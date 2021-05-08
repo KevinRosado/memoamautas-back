@@ -1,10 +1,11 @@
 package com.nixvoid.memoamautas.repository.impl;
 
-import com.nixvoid.memoamautas.domain.CursoEtiquetado;
-import com.nixvoid.memoamautas.domain.CursoMatriculado;
+import com.nixvoid.memoamautas.domain.TaggedCourse;
+import com.nixvoid.memoamautas.domain.EnrolledCourse;
 import com.nixvoid.memoamautas.dto.courses.*;
-import com.nixvoid.memoamautas.dto.user.Persona;
-import com.nixvoid.memoamautas.repository.CursoRepository;
+import com.nixvoid.memoamautas.dto.courses.Module;
+import com.nixvoid.memoamautas.dto.user.Person;
+import com.nixvoid.memoamautas.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,75 +20,80 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class CursoRepositoryImpl implements CursoRepository {
+public class CourseRepositoryImpl implements CourseRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public CursoEtiquetado obtenerCursos(Etiqueta etiqueta) {
-        CursoEtiquetado cursoEtiquetado = new CursoEtiquetado();
+    public TaggedCourse getCourses(Tag tag) {
+        TaggedCourse taggedCourse = new TaggedCourse();
         String sql = "with t2 as (with t1 as (select id_etiqueta, tipo_etiqueta, nombre_etiqueta from memo_amautas.etiqueta where nombre_etiqueta = ?) " +
                 "select etiqueta_curso.cod_curso, t1.tipo_etiqueta, t1.nombre_etiqueta from t1 " +
                 "inner join  memo_amautas.etiqueta_curso on t1.id_etiqueta = etiqueta_curso.cod_etiqueta) " +
-                "select nombre_curso, id_curso, t2.tipo_etiqueta, t2.nombre_etiqueta from t2 " +
+                "select curso.nombre_curso, curso.id_curso, curso.creditos, t2.tipo_etiqueta, t2.nombre_etiqueta from t2 " +
                 "inner join memo_amautas.curso on t2.cod_curso = curso.id_curso";
-        List<Curso> cursos = new ArrayList<>();
+        List<Course> courses = new ArrayList<>();
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, etiqueta.getNombre());
+            sentencia.setString(1, tag.getNombre());
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
-                Curso c = new Curso();
-                cursoEtiquetado.setValor_etiqueta(resultado.getString("nombre_etiqueta"));
-                cursoEtiquetado.setTipo_etiqueta(resultado.getString("tipo_etiqueta"));
+                Course c = new Course();
+                List<Module> modules = new ArrayList<>();
+                List<Person> profesores = new ArrayList<>();
+                taggedCourse.setValor_etiqueta(resultado.getString("nombre_etiqueta"));
+                taggedCourse.setTipo_etiqueta(resultado.getString("tipo_etiqueta"));
                 c.setNombre(resultado.getString("nombre_curso"));
                 c.setId(resultado.getString("id_curso"));
-                cursos.add(c);
+                c.setCreditos(resultado.getInt("creditos"));
+                c.setProfesores(profesores);
+                c.setModules(modules);
+                courses.add(c);
             }
-            cursoEtiquetado.setCursos(cursos);
+            taggedCourse.setCourses(courses);
             resultado.close();
             cn.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return cursoEtiquetado;
+        return taggedCourse;
     }
 
     @Override
-    public Curso obtenerCursoDetails(Curso curso) {
-        Curso curso1 = new Curso();
+    public Course getCourseDetails(Course course) {
+        Course course1 = new Course();
         String sql = "with t1 as (select id_curso, nombre_curso, creditos, descripcion from memo_amautas.curso where nombre_curso = ?) " +
                 "select modulo.*, t1.* from t1 " +
                 "inner join memo_amautas.modulo on modulo.cod_curso = t1.id_curso";
         String sql1 = "select id_sesion, cod_modulo, tema_sesion, orden from memo_amautas.sesion";
-        List<Modulo> modulos = new ArrayList<>();
+        List<Module> modules = new ArrayList<>();
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, curso.getNombre());
+            sentencia.setString(1, course.getNombre());
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
-                Modulo m = new Modulo();
-                List<Sesion> sesions = new ArrayList<>();
-                curso1.setId(resultado.getString("id_curso"));
-                curso1.setNombre(resultado.getString("nombre_curso"));
-                curso1.setCreditos(resultado.getInt("creditos"));
-                curso1.setDescripcion(resultado.getString("descripcion"));
+                Module m = new Module();
+                List<Session> sessions = new ArrayList<>();
+                course1.setId(resultado.getString("id_curso"));
+                course1.setNombre(resultado.getString("nombre_curso"));
+                course1.setCreditos(resultado.getInt("creditos"));
+                course1.setDescripcion(resultado.getString("descripcion"));
                 m.setId(resultado.getString("id_modulo"));
                 m.setTema(resultado.getString("tema_modulo"));
                 m.setOrden(resultado.getInt("orden"));
-                m.setSesiones(sesions);
-                modulos.add(m);
+                m.setSesiones(sessions);
+                modules.add(m);
             }
             resultado.close();
             PreparedStatement ps = cn.prepareStatement(sql1);
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
-                for(Modulo m: modulos){
+                for(Module m: modules){
                     if(m.getId().equals(rs.getString("cod_modulo"))){
-                        Sesion s = new Sesion();
+                        Session s = new Session();
                         s.setId(rs.getString("id_sesion"));
                         s.setTema(rs.getString("tema_sesion"));
                         s.setOrden(rs.getInt("orden"));
@@ -101,37 +107,37 @@ public class CursoRepositoryImpl implements CursoRepository {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        curso1.setModulos(modulos);
-        return curso1;
+        course1.setModules(modules);
+        return course1;
     }
 
     @Override
-    public Curso inscribirCurso(CursoMatriculado cursoMatriculado) {
-        Curso cursoDetails = new Curso();
+    public Course enrollCourse(EnrolledCourse enrolledCourse) {
+        Course courseDetails = new Course();
         String sql = "insert into memo_amautas.curso_matriculado (cod_curso, cod_persona, fecha_inscripcion, progreso_curso) values (?,?,?,?);";
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, cursoMatriculado.getId_curso());
-            sentencia.setString(2, cursoMatriculado.getId_persona());
-            sentencia.setString(3, cursoMatriculado.getFecha_inscripcion().toString());
-            sentencia.setString(4, cursoMatriculado.getProgreso_curso().toString());
+            sentencia.setString(1, enrolledCourse.getId_curso());
+            sentencia.setString(2, enrolledCourse.getId_persona());
+            sentencia.setString(3, enrolledCourse.getFecha_inscripcion().toString());
+            sentencia.setString(4, enrolledCourse.getProgreso_curso().toString());
             ResultSet resultado = sentencia.executeQuery();
             resultado.close();
             cn.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        cursoDetails.setId(cursoMatriculado.getId_curso());
-        cursoDetails.setNombre(cursoMatriculado.getNombre_curso());
-        return obtenerCursoDetails(cursoDetails);
+        courseDetails.setId(enrolledCourse.getId_curso());
+        courseDetails.setNombre(enrolledCourse.getNombre_curso());
+        return getCourseDetails(courseDetails);
     }
 
     @Override
-    public Curso obtenerInfo(Curso curso) {
-        Curso cursoInfo =  new Curso();
-        List<Persona> profesores = new ArrayList<>();
-        List<Modulo> modulos = new ArrayList<>();
+    public Course getCourseInfo(Course course) {
+        Course courseInfo =  new Course();
+        List<Person> profesores = new ArrayList<>();
+        List<Module> modules = new ArrayList<>();
         String sql = "with t2 as (with t1 as (select creditos, descripcion, nombre_curso, id_curso from memo_amautas.curso where id_curso = ?) " +
                 "select t1.*, curso_matriculado.cod_persona from t1 " +
                 "inner join memo_amautas.curso_matriculado on t1.id_curso = curso_matriculado.cod_curso) " +
@@ -140,28 +146,28 @@ public class CursoRepositoryImpl implements CursoRepository {
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, curso.getId());
+            sentencia.setString(1, course.getId());
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
-                Persona profesor = new Persona();
-                cursoInfo.setId(resultado.getString("id_curso"));
-                cursoInfo.setNombre(resultado.getString("nombre_curso"));
-                cursoInfo.setCreditos(resultado.getInt("creditos"));
-                cursoInfo.setDescripcion(resultado.getString("descripcion"));
+                Person profesor = new Person();
+                courseInfo.setId(resultado.getString("id_curso"));
+                courseInfo.setNombre(resultado.getString("nombre_curso"));
+                courseInfo.setCreditos(resultado.getInt("creditos"));
+                courseInfo.setDescripcion(resultado.getString("descripcion"));
                 profesor.setId(resultado.getString("cod_persona"));
                 profesor.setNombre(resultado.getString("nombre"));
                 profesor.setApe_pat(resultado.getString("ape_pat"));
                 profesor.setApe_mat(resultado.getString("ape_mat"));
                 profesores.add(profesor);
             }
-            cursoInfo.setModulos(modulos);
-            cursoInfo.setProfesores(profesores);
+            courseInfo.setModules(modules);
+            courseInfo.setProfesores(profesores);
             resultado.close();
             cn.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return cursoInfo;
+        return courseInfo;
     }
 
 }

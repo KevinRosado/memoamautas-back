@@ -9,7 +9,7 @@ import com.nixvoid.memoamautas.dto.access.LoginRequest;
 import com.nixvoid.memoamautas.dto.access.LoginResponse;
 import com.nixvoid.memoamautas.dto.access.RegisterRequest;
 import com.nixvoid.memoamautas.dto.access.RegisterResponse;
-import com.nixvoid.memoamautas.repository.UsuarioRepository;
+import com.nixvoid.memoamautas.repository.UserRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 @Repository
 @Transactional
-public class UsuarioRepositoryImpl implements UsuarioRepository {
+public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

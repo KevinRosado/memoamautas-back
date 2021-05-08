@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Modulo {
+public class Module {
     private String id;
     private String tema;
     private Integer orden;
-    private List<Sesion> sesiones;
+    private List<Session> sesiones;
 }

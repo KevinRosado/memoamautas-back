@@ -1,13 +1,13 @@
 package com.nixvoid.memoamautas.domain;
 
-import com.nixvoid.memoamautas.dto.courses.Curso;
+import com.nixvoid.memoamautas.dto.courses.Course;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class CursoEtiquetado {
+public class TaggedCourse {
     private String tipo_etiqueta;
     private String valor_etiqueta;
-    private List<Curso> cursos;
+    private List<Course> courses;
 }
