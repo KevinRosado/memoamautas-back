@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 public class Module {
     private String id;
-    private String tema;
-    private Integer orden;
-    private List<Session> sesiones;
+    private String topic;
+    private Integer order;
+    private List<Session> sessions;
 }

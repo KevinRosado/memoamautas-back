@@ -45,10 +45,10 @@ public class CourseRepositoryImpl implements CourseRepository {
                 List<Person> profesores = new ArrayList<>();
                 taggedCourse.setValor_etiqueta(resultado.getString("nombre_etiqueta"));
                 taggedCourse.setTipo_etiqueta(resultado.getString("tipo_etiqueta"));
-                c.setNombre(resultado.getString("nombre_curso"));
+                c.setName(resultado.getString("nombre_curso"));
                 c.setId(resultado.getString("id_curso"));
-                c.setCreditos(resultado.getInt("creditos"));
-                c.setProfesores(profesores);
+                c.setCredits(resultado.getInt("creditos"));
+                c.setTeachers(profesores);
                 c.setModules(modules);
                 courses.add(c);
             }
@@ -72,19 +72,19 @@ public class CourseRepositoryImpl implements CourseRepository {
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, course.getNombre());
+            sentencia.setString(1, course.getName());
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
                 Module m = new Module();
                 List<Session> sessions = new ArrayList<>();
                 course1.setId(resultado.getString("id_curso"));
-                course1.setNombre(resultado.getString("nombre_curso"));
-                course1.setCreditos(resultado.getInt("creditos"));
-                course1.setDescripcion(resultado.getString("descripcion"));
+                course1.setName(resultado.getString("nombre_curso"));
+                course1.setCredits(resultado.getInt("creditos"));
+                course1.setDescription(resultado.getString("descripcion"));
                 m.setId(resultado.getString("id_modulo"));
-                m.setTema(resultado.getString("tema_modulo"));
-                m.setOrden(resultado.getInt("orden"));
-                m.setSesiones(sessions);
+                m.setTopic(resultado.getString("tema_modulo"));
+                m.setOrder(resultado.getInt("orden"));
+                m.setSessions(sessions);
                 modules.add(m);
             }
             resultado.close();
@@ -98,7 +98,7 @@ public class CourseRepositoryImpl implements CourseRepository {
                         s.setTema(rs.getString("tema_sesion"));
                         s.setOrden(rs.getInt("orden"));
                         s.setId_modulo(rs.getString("cod_modulo"));
-                        m.getSesiones().add(s);
+                        m.getSessions().add(s);
                     }
                 }
             }
@@ -129,7 +129,7 @@ public class CourseRepositoryImpl implements CourseRepository {
             e.printStackTrace();
         }
         courseDetails.setId(enrolledCourse.getId_curso());
-        courseDetails.setNombre(enrolledCourse.getNombre_curso());
+        courseDetails.setName(enrolledCourse.getNombre_curso());
         return getCourseDetails(courseDetails);
     }
 
@@ -151,9 +151,9 @@ public class CourseRepositoryImpl implements CourseRepository {
             while (resultado.next()){
                 Person profesor = new Person();
                 courseInfo.setId(resultado.getString("id_curso"));
-                courseInfo.setNombre(resultado.getString("nombre_curso"));
-                courseInfo.setCreditos(resultado.getInt("creditos"));
-                courseInfo.setDescripcion(resultado.getString("descripcion"));
+                courseInfo.setName(resultado.getString("nombre_curso"));
+                courseInfo.setCredits(resultado.getInt("creditos"));
+                courseInfo.setDescription(resultado.getString("descripcion"));
                 profesor.setId(resultado.getString("cod_persona"));
                 profesor.setNombre(resultado.getString("nombre"));
                 profesor.setApe_pat(resultado.getString("ape_pat"));
@@ -161,7 +161,7 @@ public class CourseRepositoryImpl implements CourseRepository {
                 profesores.add(profesor);
             }
             courseInfo.setModules(modules);
-            courseInfo.setProfesores(profesores);
+            courseInfo.setTeachers(profesores);
             resultado.close();
             cn.close();
         }catch (SQLException e){

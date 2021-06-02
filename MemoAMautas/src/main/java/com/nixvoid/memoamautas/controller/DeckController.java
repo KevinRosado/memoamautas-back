@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/decks", consumes = "application/json;charset=utf-8")
+@RequestMapping(value = "/memo/decks", consumes = "application/json;charset=utf-8")
 public class DeckController {
 
     @Autowired

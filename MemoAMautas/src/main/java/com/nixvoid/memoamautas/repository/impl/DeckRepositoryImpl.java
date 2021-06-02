@@ -39,15 +39,15 @@ public class DeckRepositoryImpl implements DeckRepository {
             while (resultado.next()){
                 Deck deck = new Deck();
                 deck.setId(resultado.getInt("cod_mazo"));
-                deck.setNombre(resultado.getString("nombre_mazo"));
-                deck.setCant_visitas(resultado.getInt("cant_visitas"));
-                deck.setCant_votos(resultado.getInt("cant_votos"));
-                deck.setCod_autor(resultado.getInt("cod_autor"));
-                deck.setNombre_autor(resultado.getString("nombre"));
-                deck.setCod_curso(resultado.getString("cod_curso"));
-                deck.setNombre_curso(resultado.getString("nombre_curso"));
-                deck.setEs_default(resultado.getBoolean("mazo_default"));
-                deck.setCod_sesion(resultado.getString("cod_sesion"));
+                deck.setName(resultado.getString("nombre_mazo"));
+                deck.setAmount_visits(resultado.getInt("cant_visitas"));
+                deck.setAmount_votes(resultado.getInt("cant_votos"));
+                deck.setAuthor_code(resultado.getInt("cod_autor"));
+                deck.setAuthor_name(resultado.getString("nombre"));
+                deck.setCourse_code(resultado.getString("cod_curso"));
+                deck.setCourse_name(resultado.getString("nombre_curso"));
+                deck.setIsdefault(resultado.getBoolean("mazo_default"));
+                deck.setSession_code(resultado.getString("cod_sesion"));
                 decks.add(deck);
             }
             resultado.close();
@@ -80,15 +80,15 @@ public class DeckRepositoryImpl implements DeckRepository {
             while (resultado.next()){
                 Deck deck = new Deck();
                 deck.setId(resultado.getInt("cod_mazo"));
-                deck.setNombre(resultado.getString("nombre_mazo"));
-                deck.setCant_visitas(resultado.getInt("cant_visitas"));
-                deck.setCant_votos(resultado.getInt("cant_votos"));
-                deck.setCod_autor(resultado.getInt("cod_autor"));
-                deck.setNombre_autor(resultado.getString("nombre"));
-                deck.setCod_curso(resultado.getString("cod_curso"));
-                deck.setNombre_curso(resultado.getString("nombre_curso"));
-                deck.setEs_default(resultado.getBoolean("mazo_default"));
-                deck.setCod_sesion(resultado.getString("cod_sesion"));
+                deck.setName(resultado.getString("nombre_mazo"));
+                deck.setAmount_visits(resultado.getInt("cant_visitas"));
+                deck.setAmount_votes(resultado.getInt("cant_votos"));
+                deck.setAuthor_code(resultado.getInt("cod_autor"));
+                deck.setAuthor_name(resultado.getString("nombre"));
+                deck.setCourse_code(resultado.getString("cod_curso"));
+                deck.setCourse_name(resultado.getString("nombre_curso"));
+                deck.setIsdefault(resultado.getBoolean("mazo_default"));
+                deck.setSession_code(resultado.getString("cod_sesion"));
                 decks.add(deck);
             }
             resultado.close();
@@ -112,14 +112,14 @@ public class DeckRepositoryImpl implements DeckRepository {
             while (resultado.next()){
                 Deck deck = new Deck();
                 deck.setId(resultado.getInt("cod_mazo"));
-                deck.setNombre(resultado.getString("nombre_mazo"));
-                deck.setCant_visitas(resultado.getInt("cant_visitas"));
-                deck.setCant_votos(resultado.getInt("cant_votos"));
-                deck.setCod_autor(resultado.getInt("cod_autor"));
-                deck.setNombre_autor(resultado.getString("nombre"));
-                deck.setCod_curso(resultado.getString("cod_curso"));
-                deck.setEs_default(resultado.getBoolean("mazo_default"));
-                deck.setCod_sesion(resultado.getString("cod_sesion"));
+                deck.setName(resultado.getString("nombre_mazo"));
+                deck.setAmount_visits(resultado.getInt("cant_visitas"));
+                deck.setAmount_votes(resultado.getInt("cant_votos"));
+                deck.setAuthor_code(resultado.getInt("cod_autor"));
+                deck.setAuthor_name(resultado.getString("nombre"));
+                deck.setCourse_code(resultado.getString("cod_curso"));
+                deck.setIsdefault(resultado.getBoolean("mazo_default"));
+                deck.setSession_code(resultado.getString("cod_sesion"));
                 decks.add(deck);
             }
             resultado.close();

@@ -1,20 +1,20 @@
 package com.nixvoid.memoamautas.repository.impl;
 
-import com.nixvoid.memoamautas.exception.ApiRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import com.nixvoid.memoamautas.domain.UserDetailsImpl;
 import com.nixvoid.memoamautas.dto.access.LoginRequest;
-import com.nixvoid.memoamautas.dto.access.LoginResponse;
 import com.nixvoid.memoamautas.dto.access.RegisterRequest;
 import com.nixvoid.memoamautas.dto.access.RegisterResponse;
+import com.nixvoid.memoamautas.exception.AlreadyExistsException;
+import com.nixvoid.memoamautas.exception.UserNotFoundException;
 import com.nixvoid.memoamautas.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 @Repository
 @Transactional
@@ -22,78 +22,48 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Qualifier("CorePasswordEncoder")
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
-    public LoginResponse loginUsuario(LoginRequest loginRequest) {
-        LoginResponse loginResponse = new LoginResponse();
-        String sql = "with t1 as (SELECT * from memo_amautas.persona where id_persona in (select cod_persona from memo_amautas.usuario where username = ? and contrasenia = ?))" +
-                "select t1.*, memo_amautas.rol.nombre_rol from t1 inner join memo_amautas.rol on t1.rol_persona= memo_amautas.rol.id_rol";
-
-        try{
-            Connection cn = jdbcTemplate.getDataSource().getConnection();
-            PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, loginRequest.getUsuario());
-            sentencia.setString(2, loginRequest.getPassword());
-            ResultSet resultado = sentencia.executeQuery();
-            while (resultado.next()){
-                loginResponse.setNombre(resultado.getString("nombre"));
-                loginResponse.setApe_pat(resultado.getString("ape_pat"));
-                loginResponse.setApe_mat(resultado.getString("ape_mat"));
-                loginResponse.setFecha_nac(resultado.getDate("fecha_nac"));
-                loginResponse.setUsername(loginRequest.getUsuario());
-                loginResponse.setPassword(loginRequest.getPassword());
-                loginResponse.setRol(resultado.getString("nombre_rol"));
-            }
-            resultado.close();
-            cn.close();
-        }catch (SQLException throwables){
-            throw new ApiRequestException("USER_NOT_EXISTS");
-        }
-        return loginResponse;
-    }
-
-    @Override
-    public RegisterResponse registerUsuario(RegisterRequest registerRequest) {
+    public RegisterResponse registerPerson(RegisterRequest registerRequest) {
         RegisterResponse registerResponse = new RegisterResponse();
-        String sql = "insert into memo_amautas.usuario(username,contrasenia) values (?,?)";
-        String sql1 = "insert into memo_amautas.persona(nombre, ape_pat, ape_mat, fecha_nac, rol_persona) values (?,?,?,?,?)";
-        String sql2 = "with t1 as (select * from memo_amautas.usuario where username = ? and contrasenia = ?) " +
-                "select memo_amautas.persona.*, t1.username, t1.contrasenia from t1 " +
-                "inner join memo_amautas.persona on t1.cod_persona = memo_amautas.persona.id_persona ";
-        String sql3 = "SELECT nombre_rol from memo_amautas.rol where id_rol in (SELECT rol_persona from memo_amautas.persona where id_persona = ?)";
+        String sql = "insert into memo_amautas.persona(nombre, ape_pat, ape_mat, fecha_nac, email, rol_persona) values (?,?,?,?,?,?)";
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, registerRequest.getPassword());
-            ps.setString(2, registerRequest.getUsername());
+            ps.setString(1, registerRequest.getName());
+            ps.setString(2, registerRequest.getFirst_surname());
+            ps.setString(3, registerRequest.getSecond_surname());
+            ps.setDate(4, Date.valueOf(registerRequest.getBirthday()));
+            ps.setString(5, registerRequest.getEmail());
+            ps.setString(6, registerRequest.getRole());
+            ps.executeUpdate();
+            cn.close();
+            registerResponse.setRegistered(true);
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return registerResponse;
+    }
+
+    @Override
+    public RegisterResponse registerUsuario(RegisterRequest registerRequest, Integer personCode) {
+        RegisterResponse registerResponse = new RegisterResponse();
+        String sql = "insert into memo_amautas.usuario(username,contrasenia,cod_persona) values (?,?,?)";
+        try{
+            Connection cn = jdbcTemplate.getDataSource().getConnection();
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, registerRequest.getUsername());
+            ps.setString(2,this.passwordEncoder.encode(registerRequest.getPassword()));
+            ps.setInt(3, personCode);
             ResultSet rs = ps.executeQuery();
             rs.close();
-
-            PreparedStatement ps1 = cn.prepareStatement(sql1);
-            ResultSet rs1 = ps1.executeQuery();
-            rs1.close();
             cn.close();
-
-            Connection cn2 = jdbcTemplate.getDataSource().getConnection();
-            PreparedStatement ps2 = cn2.prepareStatement(sql2);
-            ps2.setString(1, registerRequest.getUsername());
-            ps2.setString(2, registerRequest.getPassword());
-            ResultSet rs2 = ps2.executeQuery();
-            PreparedStatement ps3 = cn2.prepareStatement(sql3);
-            ps3.setString(1, rs2.getString("rol_persona"));
-            ResultSet resultSet = ps3.executeQuery();
-            while(rs2.next()){
-                registerResponse.setNombre(rs2.getString("nombre"));
-                registerResponse.setApe_pat(rs2.getString("ape_pat"));
-                registerResponse.setApe_mat(rs2.getString("ape_mat"));
-                registerResponse.setFecha_nac(rs2.getDate("fecha_nac"));
-                registerResponse.setRol(resultSet.getString("nombre_rol"));
-                registerResponse.setUsername(rs2.getString("username"));
-                registerResponse.setPassword(rs2.getString("contrasenia"));
-            }
-
+            registerResponse.setRegistered(true);
         }catch (SQLException throwables){
-            throw new ApiRequestException("USER_ALREADY_EXISTS");
+            throw new AlreadyExistsException("USER_ALREADY_EXISTS");
         }
         return registerResponse;
     }
@@ -105,20 +75,68 @@ public class UserRepositoryImpl implements UserRepository {
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, loginRequest.getUsuario());
+            sentencia.setString(1, loginRequest.getUsername());
             ResultSet resultado = sentencia.executeQuery();
 
             while (resultado.next()){
-                loginRequest1.setUsuario(resultado.getString("email"));
+                loginRequest1.setUsername(resultado.getString("username"));
                 loginRequest1.setPassword(resultado.getString("contrasenia"));
             }
             cn.close();
-            if(loginRequest1.getUsuario() == null){
-                throw new SQLException("");
+            if(loginRequest1.getUsername() == null){
+                throw new UserNotFoundException("USER_NOT_FOUND");
             }
         }catch (SQLException throwables){
-            throw new ApiRequestException("NOT_FOUND");
+            throw new UserNotFoundException("USER_NOT_FOUND");
         }
         return loginRequest1;
+    }
+
+    @Override
+    public UserDetailsImpl getUserInfo(String username) {
+
+        String sql = "with t1 as (select * from memo_amautas.usuario where username = ?) " +
+                "select t1.*, persona.* from memo_amautas.persona inner join t1 on persona.id_persona = t1.cod_persona";
+        UserDetailsImpl userDetails = new UserDetailsImpl();
+        try{
+            Connection cn = jdbcTemplate.getDataSource().getConnection();
+            PreparedStatement sentencia = cn.prepareStatement(sql);
+            sentencia.setString(1, username);
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()){
+                userDetails.setName(resultado.getString("nombre"));
+                userDetails.setFirst_surname(resultado.getString("ape_pat"));
+                userDetails.setSecond_surname(resultado.getString("ape_mat"));
+                userDetails.setBirthday(resultado.getString("fecha_nac"));
+                userDetails.setUsername(resultado.getString("username"));
+                userDetails.setPassword(resultado.getString("contrasenia"));
+                userDetails.setRole(resultado.getString("rol_persona"));
+            }
+            resultado.close();
+            cn.close();
+        }catch (SQLException throwables){
+            throw new UserNotFoundException("USER_NOT_FOUND");
+        }
+        return userDetails;
+    }
+
+    @Override
+    public Integer getPersonInfo(String email) {
+        Integer personCode = 0;
+        String sql = "select id_persona from memo_amautas.persona where email = ?";
+        try{
+            Connection cn = jdbcTemplate.getDataSource().getConnection();
+            PreparedStatement sentencia = cn.prepareStatement(sql);
+            sentencia.setString(1, email);
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()){
+                personCode = resultado.getInt("id_persona");
+            }
+            resultado.close();
+            cn.close();
+        }catch (SQLException throwables){
+            throw new UserNotFoundException("EMAIL_NOT_FOUND");
+        }
+        return personCode;
     }
 }

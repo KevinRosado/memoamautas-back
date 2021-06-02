@@ -5,13 +5,13 @@ import lombok.Data;
 @Data
 public class Deck {
     private Integer id;
-    private String nombre;
-    private Integer cant_visitas;
-    private Integer cant_votos;
-    private Boolean es_default;
-    private Integer cod_autor;
-    private String nombre_autor;
-    private String cod_curso;
-    private String nombre_curso;
-    private String cod_sesion;
+    private String name;
+    private Integer amount_visits;
+    private Integer amount_votes;
+    private Boolean isdefault;
+    private Integer author_code;
+    private String author_name;
+    private String course_code;
+    private String course_name;
+    private String session_code;
 }

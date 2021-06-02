@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/courses", consumes = "application/json;charset=utf-8")
+@RequestMapping(value = "/memo/course", consumes = "application/json;charset=utf-8")
 public class CourseController {
     @Autowired
     private CourseService courseService;

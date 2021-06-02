@@ -6,11 +6,11 @@ import lombok.Data;
 public class Card {
     private String id;
     private String color;
-    private String id_mazo;
-    private String pregunta;
-    private String respuesta;
-    private String color_pregunta;
-    private String color_respuesta;
-    private String path_img_pregunta;
-    private String path_img_respuesta;
+    private String id_deck;
+    private String question;
+    private String answer;
+    private String question_color;
+    private String answer_color;
+    private String path_questionimg;
+    private String path_answerimg;
 }
