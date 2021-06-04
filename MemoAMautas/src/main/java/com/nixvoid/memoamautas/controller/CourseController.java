@@ -1,22 +1,22 @@
 package com.nixvoid.memoamautas.controller;
 
+import com.nixvoid.memoamautas.domain.EnrolledCourse;
 import com.nixvoid.memoamautas.domain.TaggedCourse;
 import com.nixvoid.memoamautas.dto.courses.Course;
-import com.nixvoid.memoamautas.domain.EnrolledCourse;
 import com.nixvoid.memoamautas.dto.courses.Module;
-import com.nixvoid.memoamautas.dto.courses.Tag;
 import com.nixvoid.memoamautas.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/memo/course", consumes = "application/json;charset=utf-8")
 public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("/all")
-    public TaggedCourse getCourses(@RequestBody Tag tag){
+    @GetMapping("/courseByTag")
+    public TaggedCourse getCourses(@RequestParam String tag){
         return courseService.getCourses(tag);
     }
 

@@ -26,7 +26,7 @@ public class CourseRepositoryImpl implements CourseRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public TaggedCourse getCourses(Tag tag) {
+    public TaggedCourse getCourses(String tag) {
         TaggedCourse taggedCourse = new TaggedCourse();
         String sql = "with t2 as (with t1 as (select id_etiqueta, tipo_etiqueta, nombre_etiqueta from memo_amautas.etiqueta where nombre_etiqueta = ?) " +
                 "select etiqueta_curso.cod_curso, t1.tipo_etiqueta, t1.nombre_etiqueta from t1 " +
@@ -37,7 +37,7 @@ public class CourseRepositoryImpl implements CourseRepository {
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, tag.getNombre());
+            sentencia.setString(1, tag);
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
                 Course c = new Course();

@@ -19,7 +19,7 @@ public class CourseServiceImpl implements CourseService {
     private CourseRepository courseRepository;
 
     @Override
-    public TaggedCourse getCourses(Tag tag) {
+    public TaggedCourse getCourses(String tag) {
         return courseRepository.getCourses(tag);
     }
 
