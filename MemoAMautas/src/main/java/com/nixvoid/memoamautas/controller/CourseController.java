@@ -8,7 +8,6 @@ import com.nixvoid.memoamautas.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/memo/course", consumes = "application/json;charset=utf-8")
 public class CourseController {
@@ -19,7 +18,6 @@ public class CourseController {
     public TaggedCourse getCourses(@RequestParam String tag){
         return courseService.getCourses(tag);
     }
-
     @GetMapping("/details")
     public Course getCourseDetails(@RequestBody Course course){
         return courseService.getCourseDetails(course);
