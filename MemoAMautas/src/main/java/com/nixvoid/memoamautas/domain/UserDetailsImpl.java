@@ -13,6 +13,8 @@ import java.util.Collections;
 @Data
 public class UserDetailsImpl implements UserDetails {
     private String username;
+    private String password;
+
     @JsonIgnore
     private Integer personCode;
     private String name;
@@ -20,7 +22,6 @@ public class UserDetailsImpl implements UserDetails {
     private String second_surname;
     private String birthday;
     private String email;
-    private String password;
     private String role;
 
     @Override
@@ -38,13 +39,7 @@ public class UserDetailsImpl implements UserDetails {
         return this.password;
     }
 
-
-    public Integer getPersonCode() {
-        return this.personCode;
-    }
-
     @Override
-    @JsonIgnore
     public String getUsername() {
         return this.username;
     }
@@ -69,7 +64,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
 }

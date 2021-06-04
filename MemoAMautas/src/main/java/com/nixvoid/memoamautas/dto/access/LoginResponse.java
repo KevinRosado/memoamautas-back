@@ -1,10 +1,14 @@
 package com.nixvoid.memoamautas.dto.access;
 
 import lombok.Data;
-import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.List;
 
 @Data
 public class LoginResponse {
-    private UserDetails details;
+    private String username;
+    private String email;
     private String jwt;
+    private String expiresIn;
+    private List<String> roles;
 }

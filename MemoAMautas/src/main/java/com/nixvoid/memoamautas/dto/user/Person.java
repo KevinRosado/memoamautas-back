@@ -12,6 +12,7 @@ public class Person {
     private String ape_pat;
     private String ape_mat;
     private Date fecha_nac;
+    private String email;
     private String rol;
 
 }

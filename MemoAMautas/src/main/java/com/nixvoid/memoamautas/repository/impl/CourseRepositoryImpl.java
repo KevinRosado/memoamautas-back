@@ -122,8 +122,7 @@ public class CourseRepositoryImpl implements CourseRepository {
             sentencia.setString(2, enrolledCourse.getId_persona());
             sentencia.setString(3, enrolledCourse.getFecha_inscripcion().toString());
             sentencia.setString(4, enrolledCourse.getProgreso_curso().toString());
-            ResultSet resultado = sentencia.executeQuery();
-            resultado.close();
+            sentencia.executeUpdate();
             cn.close();
         }catch (SQLException e){
             e.printStackTrace();

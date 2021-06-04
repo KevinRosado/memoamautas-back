@@ -43,7 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
             cn.close();
             registerResponse.setRegistered(true);
         }catch (SQLException throwables){
-            throwables.printStackTrace();
+            throw new AlreadyExistsException("USER_ALREADY_EXISTS");
         }
         return registerResponse;
     }
@@ -58,8 +58,7 @@ public class UserRepositoryImpl implements UserRepository {
             ps.setString(1, registerRequest.getUsername());
             ps.setString(2,this.passwordEncoder.encode(registerRequest.getPassword()));
             ps.setInt(3, personCode);
-            ResultSet rs = ps.executeQuery();
-            rs.close();
+            ps.executeUpdate();
             cn.close();
             registerResponse.setRegistered(true);
         }catch (SQLException throwables){
@@ -75,16 +74,16 @@ public class UserRepositoryImpl implements UserRepository {
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, loginRequest.getUsername());
+            sentencia.setString(1, loginRequest.getEmail());
             ResultSet resultado = sentencia.executeQuery();
 
             while (resultado.next()){
-                loginRequest1.setUsername(resultado.getString("username"));
+                loginRequest1.setEmail(resultado.getString("username"));
                 loginRequest1.setPassword(resultado.getString("contrasenia"));
             }
             cn.close();
-            if(loginRequest1.getUsername() == null){
-                throw new UserNotFoundException("USER_NOT_FOUND");
+            if(loginRequest1.getEmail() == null){
+                throw new UserNotFoundException("");
             }
         }catch (SQLException throwables){
             throw new UserNotFoundException("USER_NOT_FOUND");
@@ -93,15 +92,15 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public UserDetailsImpl getUserInfo(String username) {
+    public UserDetailsImpl getUserInfo(String email) {
 
-        String sql = "with t1 as (select * from memo_amautas.usuario where username = ?) " +
-                "select t1.*, persona.* from memo_amautas.persona inner join t1 on persona.id_persona = t1.cod_persona";
+        String sql = "with t1 as (select * from memo_amautas.persona where email = ?) " +
+                "select t1.*, usuario.* from memo_amautas.usuario inner join t1 on usuario.cod_persona= t1.id_persona";
         UserDetailsImpl userDetails = new UserDetailsImpl();
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
-            sentencia.setString(1, username);
+            sentencia.setString(1, email);
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()){
                 userDetails.setName(resultado.getString("nombre"));
@@ -110,6 +109,7 @@ public class UserRepositoryImpl implements UserRepository {
                 userDetails.setBirthday(resultado.getString("fecha_nac"));
                 userDetails.setUsername(resultado.getString("username"));
                 userDetails.setPassword(resultado.getString("contrasenia"));
+                userDetails.setEmail(resultado.getString("email"));
                 userDetails.setRole(resultado.getString("rol_persona"));
             }
             resultado.close();

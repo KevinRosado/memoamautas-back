@@ -6,13 +6,18 @@ create table memo_amautas.persona(
                                      id_persona SERIAL primary key,
                                      rol_persona varchar(8),
                                      nombre varchar(30),
-                                     email varchar(255) unique,
                                      ape_pat varchar(30),
                                      ape_mat varchar(30),
                                      fecha_nac date,
                                      foreign key (rol_persona) references memo_amautas.rol (id_rol)
 );
-alter table memo_amautas.persona add column ;
+create table memo_amautas.usuario (
+                                      username varchar(30) unique,
+                                      contrasenia text unique
+                                          email varchar(255) unique,
+                                      cod_persona SERIAL,
+                                      foreign key (cod_persona) references memo_amautas.persona (id_persona)
+);
 create table memo_amautas.etiqueta(
                                       id_etiqueta varchar(5) primary key,
                                       nombre_etiqueta varchar(30),
@@ -37,12 +42,7 @@ create table memo_amautas.sesion(
                                     orden int,
                                     foreign key (cod_modulo) references memo_amautas.modulo (id_modulo)
 );
-create table memo_amautas.usuario (
-                                      username varchar(30) unique,
-                                      contrasenia text unique,
-                                      cod_persona SERIAL,
-                                      foreign key (cod_persona) references memo_amautas.persona (id_persona)
-);
+
 create table memo_amautas.curso_matriculado (
                                                 id_curso_matriculado varchar(8) primary key,
                                                 cod_curso varchar(8),
