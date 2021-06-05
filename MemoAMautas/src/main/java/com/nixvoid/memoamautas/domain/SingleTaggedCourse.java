@@ -2,11 +2,9 @@ package com.nixvoid.memoamautas.domain;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class TaggedCourse {
+public class SingleTaggedCourse {
     private String tag_type;
     private String tag_name;
-    private List<CourseWithTag> courses;
+    private CourseWithTag course;
 }

@@ -1,5 +1,7 @@
 package com.nixvoid.memoamautas.repository.impl;
 
+import com.nixvoid.memoamautas.domain.CourseWithTag;
+import com.nixvoid.memoamautas.domain.SingleTaggedCourse;
 import com.nixvoid.memoamautas.domain.TaggedCourse;
 import com.nixvoid.memoamautas.domain.EnrolledCourse;
 import com.nixvoid.memoamautas.dto.courses.*;
@@ -26,39 +28,59 @@ public class CourseRepositoryImpl implements CourseRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public TaggedCourse getCourses(String tag) {
-        TaggedCourse taggedCourse = new TaggedCourse();
-        String sql = "with t2 as (with t1 as (select id_etiqueta, tipo_etiqueta, nombre_etiqueta from memo_amautas.etiqueta where nombre_etiqueta = ?) " +
-                "select etiqueta_curso.cod_curso, t1.tipo_etiqueta, t1.nombre_etiqueta from t1 " +
-                "inner join  memo_amautas.etiqueta_curso on t1.id_etiqueta = etiqueta_curso.cod_etiqueta) " +
-                "select curso.nombre_curso, curso.id_curso, curso.creditos, t2.tipo_etiqueta, t2.nombre_etiqueta from t2 " +
-                "inner join memo_amautas.curso on t2.cod_curso = curso.id_curso";
-        List<Course> courses = new ArrayList<>();
+    public List<TaggedCourse> getCourses(String tag) {
+        List<TaggedCourse> taggedCourses = new ArrayList<>();
+        String sql = "select id_etiqueta, nombre_etiqueta, nombre_tipo_etiqueta, nombre_curso from memo_amautas.tipo_etiqueta te " +
+                "inner join (select * from memo_amautas.etiqueta where cod_tipo_etiqueta = ?) e " +
+                "on te.id_tipo_etiqueta = e.cod_tipo_etiqueta " +
+                "inner join (select nombre_etiqueta, id_etiqueta from memo_amautas.valor_etiqueta) ve " +
+                "on ve.id_etiqueta = e.cod_etiqueta " +
+                "inner join memo_amautas.etiqueta_curso ec " +
+                "on (ec.cod_etiqueta, ec.cod_tipo_etiqueta) = (e.cod_etiqueta, e.cod_tipo_etiqueta) " +
+                "inner join (select id_curso, nombre_curso from memo_amautas.curso) c " +
+                "on c.id_curso = ec.cod_curso order by id_etiqueta asc";
         try{
             Connection cn = jdbcTemplate.getDataSource().getConnection();
             PreparedStatement sentencia = cn.prepareStatement(sql);
             sentencia.setString(1, tag);
             ResultSet resultado = sentencia.executeQuery();
-            while (resultado.next()){
-                Course c = new Course();
-                List<Module> modules = new ArrayList<>();
-                List<Person> profesores = new ArrayList<>();
-                taggedCourse.setValor_etiqueta(resultado.getString("nombre_etiqueta"));
-                taggedCourse.setTipo_etiqueta(resultado.getString("tipo_etiqueta"));
-                c.setName(resultado.getString("nombre_curso"));
-                c.setId(resultado.getString("id_curso"));
-                c.setCredits(resultado.getInt("creditos"));
-                c.setTeachers(profesores);
-                c.setModules(modules);
-                courses.add(c);
+            List<SingleTaggedCourse> singleTaggedCourses = new ArrayList<>();
+            while(resultado.next()){
+                SingleTaggedCourse st = new SingleTaggedCourse();
+                st.setTag_name(resultado.getString("nombre_etiqueta"));
+                st.setTag_type(resultado.getString("nombre_tipo_etiqueta"));
+                CourseWithTag c = new CourseWithTag();
+                c.setCourse_name(resultado.getString("nombre_curso"));
+                st.setCourse(c);
+                singleTaggedCourses.add(st);
             }
-            taggedCourse.setCourses(courses);
             resultado.close();
             cn.close();
+            List<String> tags = new ArrayList<>();
+            String value = "";
+            for(SingleTaggedCourse course: singleTaggedCourses){
+                if(!course.getTag_name().equals(value)){
+                    tags.add(course.getTag_name());
+                }
+                value = course.getTag_name();
+            }
+            for (String tag1: tags) {
+                TaggedCourse taggedCourse = new TaggedCourse();
+                List<CourseWithTag> courses = new ArrayList<>();
+                taggedCourse.setTag_name(tag1);
+                for(SingleTaggedCourse course: singleTaggedCourses){
+                    taggedCourse.setTag_type(course.getTag_type());
+                    if(course.getTag_name().equals(tag1)){
+                        courses.add(course.getCourse());
+                    }
+                }
+                taggedCourse.setCourses(courses);
+                taggedCourses.add(taggedCourse);
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return taggedCourse;
+        return taggedCourses;
     }
 
     @Override

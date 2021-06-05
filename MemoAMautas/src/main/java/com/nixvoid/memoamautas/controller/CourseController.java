@@ -8,6 +8,8 @@ import com.nixvoid.memoamautas.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/memo/course", consumes = "application/json;charset=utf-8")
 public class CourseController {
@@ -15,7 +17,7 @@ public class CourseController {
     private CourseService courseService;
 
     @GetMapping("/courseByTag")
-    public TaggedCourse getCourses(@RequestParam String tag){
+    public List<TaggedCourse> getCourses(@RequestParam String tag){
         return courseService.getCourses(tag);
     }
     @GetMapping("/details")

@@ -5,8 +5,10 @@ import com.nixvoid.memoamautas.domain.TaggedCourse;
 import com.nixvoid.memoamautas.dto.courses.Course;
 import com.nixvoid.memoamautas.dto.courses.Module;
 
+import java.util.List;
+
 public interface CourseService {
-    TaggedCourse getCourses(String tag);
+    List<TaggedCourse> getCourses(String tag);
     Course getCourseDetails(Course course);
     Module getSessions(Module module);
     Course enrollCourse(EnrolledCourse enrolledCourse);
