@@ -20,6 +20,7 @@ public class CourseController {
     public List<TaggedCourse> getCourses(@RequestParam String tag){
         return courseService.getCourses(tag);
     }
+
     @GetMapping("/details")
     public Course getCourseDetails(@RequestBody Course course){
         return courseService.getCourseDetails(course);
