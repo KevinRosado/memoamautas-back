@@ -32,7 +32,7 @@ insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('202'
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('203','04');
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('204','04');
 
-
+-- 1 CICLO
 insert into memo_amautas.curso values ('BIC01','Introduccion a la Computacion',2);
 insert into memo_amautas.curso values ('BMA01', 'Calculo Diferencial', 5);
 insert into memo_amautas.curso values ('FB101','Geometría Analítica',3);
