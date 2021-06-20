@@ -32,13 +32,14 @@ insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('202'
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('203','04');
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('204','04');
 
-
+-- 1 CICLO
 insert into memo_amautas.curso values ('BIC01','Introduccion a la Computacion',2);
 insert into memo_amautas.curso values ('BMA01', 'Calculo Diferencial', 5);
 insert into memo_amautas.curso values ('FB101','Geometría Analítica',3);
 insert into memo_amautas.curso values ('BRN01','Redacción y Comunicación',2);
 insert into memo_amautas.curso values ('SI101','Introducción a la Ingeniería de Sistemas',3);
 insert into memo_amautas.curso values ('BQU01', 'Química I', 5);
+-- 2 CICLO
 insert into memo_amautas.curso values ('BMA02','Cálculo Integral',5);
 insert into memo_amautas.curso values ('BMA03', 'Álgebra Lineal', 4);
 insert into memo_amautas.curso values ('BEF01', 'Ética y Filosofía', 2);
@@ -46,6 +47,7 @@ insert into memo_amautas.curso values ('SI205', 'Algoritmia y Estructura de Dato
 insert into memo_amautas.curso values ('SI203', 'Teoría y Ciencia de Sistemas', 3);
 insert into memo_amautas.curso values ('SI207', 'Sistemas Biológicos y Ecológicos', 2);
 insert into memo_amautas.curso values ('SI201', 'Psicología Sistémica', 3);
+-- 3 CICLO
 insert into memo_amautas.curso values ('SI302', 'Programacion Orientada a Objetos', 3);
 insert into memo_amautas.curso values ('BFI01', 'Física I', 5);
 insert into memo_amautas.curso values ('HU301', 'Metodología de la Investigación', 3);
@@ -53,6 +55,30 @@ insert into memo_amautas.curso values ('FB303', 'Cálculo Multivariable', 5);
 insert into memo_amautas.curso values ('SI301', 'Teoría y Ciencia de Sistemas Aplicada', 3);
 insert into memo_amautas.curso values ('FB301', 'Matemática Discreta', 3);
 insert into memo_amautas.curso values ('FB305', 'Estadística y Probabilidades', 3);
+-- 4 CICLO
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI403','Metodología de Sistemas Blandos',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB401','Fisica II',5);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI405','Modelado Conceptual de Datos',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB403','Ecuaciones Diferenciales',5);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB405','Estadística Aplicada',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('HU102','Desarrollo Personal',2);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB402','Calculo Numérico',3);
+-- 5 CICLO
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('BEG01','Economía General',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('BRN01','Realidad Nacional, Constitución y Derechos Humanos',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB501','Matematica Aplicada',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('GE501','Teoría Organizacional',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI503','Ingeniería de Procesos',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI501','Investigación de Operaciones I',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI505','Diseño de Base de Datos',3);
+-- 6 CICLO
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('GE605','Sistema y Gestión Financiera',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI601','Investigación de Operaciones II',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI602','Dinamica de Sistemas',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI603','Modelado de Procesos de Ciclo de Vida de Sistemas',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI604','Analisis y Diseño de Sistemas',4);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI605','Arquitectura Empresarial',3);
+insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI607','Arquitectura Computacional y Redes',3);
 -- 7 CICLO
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE703', 'Sistemas Integrados Empresariales', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE709', 'Sistemas de Calidad', 3);
@@ -83,7 +109,6 @@ insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI055
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI075', 'Auditoría de Sistemas', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI085', 'Aplicación de Negocios Electrónicos', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI095', 'Ingeniería Empresarial', 3);
-
 
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BIC01','100', '01'); --fk = 10001 ; pk = BIC0110001
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BMA01','100', '01');
