@@ -1,0 +1,20 @@
+2021-06-10 17:47:53,309 INFO org.springframework.boot.StartupInfoLogger [main] Starting MemoAmautasApplication using Java 11.0.10 on LAPTOP-PUK1N8UT with PID 16412 (D:\memoamautas\memoamautas-back\MemoAMautas\target\classes started by avavi in D:\memoamautas\memoamautas-back\MemoAMautas)
+2021-06-10 17:47:53,311 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-06-10 17:47:53,311 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-06-10 17:47:53,787 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2021-06-10 17:47:53,806 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 14 ms. Found 0 JDBC repository interfaces.
+2021-06-10 17:47:54,155 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-06-10 17:47:54,163 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-06-10 17:47:54,164 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-06-10 17:47:54,164 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-06-10 17:47:54,246 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-06-10 17:47:54,246 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 901 ms
+2021-06-10 17:47:54,430 DEBUG org.springframework.web.filter.GenericFilterBean [main] Filter 'authenticationJwtTokenFilter' configured for use
+2021-06-10 17:47:54,431 DEBUG org.springframework.web.filter.GenericFilterBean [main] Filter 'jwtAuthFilter' configured for use
+2021-06-10 17:47:54,542 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-10 17:47:54,680 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-06-10 17:47:55,968 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-06-10 17:47:56,058 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure Or [Ant [pattern='/memo/**']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@19cdc217, org.springframework.security.web.context.SecurityContextPersistenceFilter@2fde9469, org.springframework.security.web.header.HeaderWriterFilter@87f501f, org.springframework.security.web.authentication.logout.LogoutFilter@7911cc15, com.nixvoid.memoamautas.config.filter.JwtAuthFilter@682abca7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@458031da, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22a4ca4a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5f5297e3, org.springframework.security.web.session.SessionManagementFilter@403364e9, org.springframework.security.web.access.ExceptionTranslationFilter@3de79067, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3bbb8c16]
+2021-06-10 17:47:56,076 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-06-10 17:47:56,090 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-06-10 17:47:56,097 INFO org.springframework.boot.StartupInfoLogger [main] Started MemoAmautasApplication in 3.211 seconds (JVM running for 4.845)

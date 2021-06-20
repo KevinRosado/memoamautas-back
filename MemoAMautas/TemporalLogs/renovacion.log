@@ -1,0 +1,158 @@
+2021-06-12 19:27:05,082 INFO org.springframework.boot.StartupInfoLogger [main] Starting MemoAmautasApplicationTests using Java 11.0.10 on LAPTOP-PUK1N8UT with PID 13928 (started by avavi in D:\memoamautas\memoamautas-back\MemoAMautas)
+2021-06-12 19:27:05,086 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-06-12 19:27:05,090 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-06-12 19:27:06,133 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2021-06-12 19:27:06,171 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+2021-06-12 19:27:07,666 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-12 19:27:08,148 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-06-12 19:27:09,486 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-06-12 19:27:10,367 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure Or [Ant [pattern='/memo/**']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@63187d63, org.springframework.security.web.context.SecurityContextPersistenceFilter@7b44bfb8, org.springframework.security.web.header.HeaderWriterFilter@7534785a, org.springframework.security.web.authentication.logout.LogoutFilter@adafe19, com.nixvoid.memoamautas.config.filter.JwtAuthFilter@1ccdc7aa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4afd65fd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54be6213, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1a536164, org.springframework.security.web.session.SessionManagementFilter@5908e6d6, org.springframework.security.web.access.ExceptionTranslationFilter@4ab66127, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@cec590c]
+2021-06-12 19:27:10,490 INFO org.springframework.boot.StartupInfoLogger [main] Started MemoAmautasApplicationTests in 6.08 seconds (JVM running for 7.741)
+2021-06-12 19:27:11,204 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-12 19:27:11,208 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2021-06-12 19:27:11,421 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2021-06-12 19:31:02,914 INFO org.springframework.boot.StartupInfoLogger [main] Starting MemoAmautasApplicationTests using Java 11.0.10 on LAPTOP-PUK1N8UT with PID 11764 (started by avavi in D:\memoamautas\memoamautas-back\MemoAMautas)
+2021-06-12 19:31:02,916 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-06-12 19:31:02,920 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-06-12 19:31:03,678 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2021-06-12 19:31:03,722 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 38 ms. Found 0 JDBC repository interfaces.
+2021-06-12 19:31:04,989 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-12 19:31:05,447 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-06-12 19:31:06,882 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-06-12 19:31:07,707 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure Or [Ant [pattern='/memo/**']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@45d7495e, org.springframework.security.web.context.SecurityContextPersistenceFilter@472c9f88, org.springframework.security.web.header.HeaderWriterFilter@794c5f5e, org.springframework.security.web.authentication.logout.LogoutFilter@1b47b7f5, com.nixvoid.memoamautas.config.filter.JwtAuthFilter@30517a57, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5908e6d6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@141aba65, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3dde5f38, org.springframework.security.web.session.SessionManagementFilter@b5312df, org.springframework.security.web.access.ExceptionTranslationFilter@77ce88c4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@18715bb]
+2021-06-12 19:31:07,841 INFO org.springframework.boot.StartupInfoLogger [main] Started MemoAmautasApplicationTests in 5.532 seconds (JVM running for 6.942)
+2021-06-12 19:31:08,447 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-12 19:31:08,450 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2021-06-12 19:31:08,963 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2021-06-12 19:38:52,064 INFO org.springframework.boot.StartupInfoLogger [main] Starting MemoAmautasApplication using Java 11.0.10 on LAPTOP-PUK1N8UT with PID 16720 (D:\memoamautas\memoamautas-back\MemoAMautas\target\classes started by avavi in D:\memoamautas\memoamautas-back\MemoAMautas)
+2021-06-12 19:38:52,069 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-06-12 19:38:52,070 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-06-12 19:38:52,401 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.nixvoid.memoamautas.MemoAmautasApplication]; nested exception is org.springframework.core.NestedIOException: Failed to load class [javax.servlet.Filter]; nested exception is java.lang.ClassNotFoundException: javax.servlet.Filter
+2021-06-12 19:38:52,438 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.nixvoid.memoamautas.MemoAmautasApplication]; nested exception is org.springframework.core.NestedIOException: Failed to load class [javax.servlet.Filter]; nested exception is java.lang.ClassNotFoundException: javax.servlet.Filter
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:189)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:331)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:247)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:311)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:112)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:746)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:564)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:782)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:774)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:339)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1340)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1329)
+	at com.nixvoid.memoamautas.MemoAmautasApplication.main(MemoAmautasApplication.java:14)
+Caused by: org.springframework.core.NestedIOException: Failed to load class [javax.servlet.Filter]; nested exception is java.lang.ClassNotFoundException: javax.servlet.Filter
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:693)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getInterfaces(ConfigurationClassParser.java:1024)
+	at org.springframework.context.annotation.ConfigurationClassParser.processInterfaces(ConfigurationClassParser.java:386)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:332)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:250)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:199)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:304)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:250)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:207)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:175)
+	... 13 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.servlet.Filter
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:284)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:690)
+	... 22 common frames omitted
+2021-06-12 19:40:15,351 INFO org.springframework.boot.StartupInfoLogger [main] Starting MemoAmautasApplication using Java 11.0.10 on LAPTOP-PUK1N8UT with PID 19784 (D:\memoamautas\memoamautas-back\MemoAMautas\target\classes started by avavi in D:\memoamautas\memoamautas-back\MemoAMautas)
+2021-06-12 19:40:15,356 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-06-12 19:40:15,358 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-06-12 19:40:16,431 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2021-06-12 19:40:16,470 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+2021-06-12 19:40:17,683 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-06-12 19:40:17,715 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-06-12 19:40:17,717 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-06-12 19:40:17,718 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-06-12 19:40:17,863 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-06-12 19:40:17,864 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2421 ms
+2021-06-12 19:40:18,197 DEBUG org.springframework.web.filter.GenericFilterBean [main] Filter 'authenticationJwtTokenFilter' configured for use
+2021-06-12 19:40:18,199 DEBUG org.springframework.web.filter.GenericFilterBean [main] Filter 'jwtAuthFilter' configured for use
+2021-06-12 19:40:18,463 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-12 19:40:18,820 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-06-12 19:40:20,242 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-06-12 19:40:20,499 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure Or [Ant [pattern='/memo/**']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a3f08b6, org.springframework.security.web.context.SecurityContextPersistenceFilter@77324a58, org.springframework.security.web.header.HeaderWriterFilter@18a98913, org.springframework.security.web.authentication.logout.LogoutFilter@1693ff90, com.nixvoid.memoamautas.config.filter.JwtAuthFilter@2db33feb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@307cf964, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6321a5aa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1be52861, org.springframework.security.web.session.SessionManagementFilter@5329f6b3, org.springframework.security.web.access.ExceptionTranslationFilter@13f40d71, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@700b9e6b]
+2021-06-12 19:40:20,553 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-06-12 19:40:20,605 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-06-12 19:40:20,624 INFO org.springframework.boot.StartupInfoLogger [main] Started MemoAmautasApplication in 6.089 seconds (JVM running for 7.224)
+2021-06-12 19:43:59,793 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-12 19:43:59,796 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-06-12 19:43:59,801 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 3 ms
+2021-06-12 19:43:59,874 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type '' not supported]
+2021-06-12 19:45:15,496 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-7] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type '' not supported]
+2021-06-12 19:45:29,088 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type '' not supported]
+2021-06-12 19:47:07,948 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-8] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type '' not supported]
+2021-06-12 19:55:09,028 INFO org.springframework.boot.StartupInfoLogger [main] Starting MemoAmautasApplication using Java 11.0.10 on LAPTOP-PUK1N8UT with PID 3980 (D:\memoamautas\memoamautas-back\MemoAMautas\target\classes started by avavi in D:\memoamautas\memoamautas-back\MemoAMautas)
+2021-06-12 19:55:09,035 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-06-12 19:55:09,036 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-06-12 19:55:09,378 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.nixvoid.memoamautas.MemoAmautasApplication]; nested exception is org.springframework.core.NestedIOException: Failed to load class [javax.servlet.Filter]; nested exception is java.lang.ClassNotFoundException: javax.servlet.Filter
+2021-06-12 19:55:09,417 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.nixvoid.memoamautas.MemoAmautasApplication]; nested exception is org.springframework.core.NestedIOException: Failed to load class [javax.servlet.Filter]; nested exception is java.lang.ClassNotFoundException: javax.servlet.Filter
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:189)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:331)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:247)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:311)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:112)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:746)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:564)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:782)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:774)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:339)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1340)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1329)
+	at com.nixvoid.memoamautas.MemoAmautasApplication.main(MemoAmautasApplication.java:14)
+Caused by: org.springframework.core.NestedIOException: Failed to load class [javax.servlet.Filter]; nested exception is java.lang.ClassNotFoundException: javax.servlet.Filter
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:693)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getInterfaces(ConfigurationClassParser.java:1024)
+	at org.springframework.context.annotation.ConfigurationClassParser.processInterfaces(ConfigurationClassParser.java:386)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:332)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:250)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:199)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:304)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:250)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:207)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:175)
+	... 13 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.servlet.Filter
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:284)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:690)
+	... 22 common frames omitted
+2021-06-12 19:57:05,641 INFO org.springframework.boot.StartupInfoLogger [main] Starting MemoAmautasApplication using Java 11.0.10 on LAPTOP-PUK1N8UT with PID 17772 (D:\memoamautas\memoamautas-back\MemoAMautas\target\classes started by avavi in D:\memoamautas\memoamautas-back\MemoAMautas)
+2021-06-12 19:57:05,648 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-06-12 19:57:05,650 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-06-12 19:57:06,759 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2021-06-12 19:57:06,796 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+2021-06-12 19:57:08,075 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-06-12 19:57:08,118 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-06-12 19:57:08,120 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-06-12 19:57:08,121 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-06-12 19:57:08,322 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-06-12 19:57:08,324 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2586 ms
+2021-06-12 19:57:08,669 DEBUG org.springframework.web.filter.GenericFilterBean [main] Filter 'authenticationJwtTokenFilter' configured for use
+2021-06-12 19:57:08,671 DEBUG org.springframework.web.filter.GenericFilterBean [main] Filter 'jwtAuthFilter' configured for use
+2021-06-12 19:57:08,933 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-12 19:57:09,289 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-06-12 19:57:10,712 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-06-12 19:57:10,968 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure Or [Ant [pattern='/memo/**']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7eaa2bc6, org.springframework.security.web.context.SecurityContextPersistenceFilter@6321a5aa, org.springframework.security.web.header.HeaderWriterFilter@14e750c5, org.springframework.security.web.authentication.logout.LogoutFilter@2d237460, com.nixvoid.memoamautas.config.filter.JwtAuthFilter@6ca30b8a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7a36c83a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@39449465, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6dae70f9, org.springframework.security.web.session.SessionManagementFilter@37ca3ca8, org.springframework.security.web.access.ExceptionTranslationFilter@7911cc15, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5fb5ad40]
+2021-06-12 19:57:11,017 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-06-12 19:57:11,057 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-06-12 19:57:11,071 INFO org.springframework.boot.StartupInfoLogger [main] Started MemoAmautasApplication in 6.296 seconds (JVM running for 7.248)
+2021-06-12 19:57:16,748 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-12 19:57:16,751 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-06-12 19:57:16,754 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 2 ms

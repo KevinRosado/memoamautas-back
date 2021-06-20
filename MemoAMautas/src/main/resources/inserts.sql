@@ -53,6 +53,37 @@ insert into memo_amautas.curso values ('FB303', 'Cálculo Multivariable', 5);
 insert into memo_amautas.curso values ('SI301', 'Teoría y Ciencia de Sistemas Aplicada', 3);
 insert into memo_amautas.curso values ('FB301', 'Matemática Discreta', 3);
 insert into memo_amautas.curso values ('FB305', 'Estadística y Probabilidades', 3);
+-- 7 CICLO
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE703', 'Sistemas Integrados Empresariales', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE709', 'Sistemas de Calidad', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI701', 'Modelado Sistémico y Simulación', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI702', 'Taller de Dinámica de Sistemas', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI704', 'Gestión de la Ingeniería de Sistemas', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI705', 'Estándares de la Ingeniería de Sistemas', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI707', 'Ingeniería de Sofware', 3);
+-- 8 CICLO
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE801', 'Planeamiento y Gestión Estratégica', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE803', 'Sistemas Analíticos', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI801', 'Modelos del Sistema Viable', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI805', 'Integración de Sistemas', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI806', 'Desarrollo Adaptativo e Integrado del Software', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI807', 'Sistemas de Inteligencia de Negocio', 3);
+-- 9 CICLO
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE902', 'Diseño y Evaluación de Proyectos', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI901', 'Proyectos de Tesis en Ingeniería de Sistemas I', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI902', 'Ingeniería de Sistemas de Servicio', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI903', 'Implementación de Sistemas', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI904', 'Seguridad de Sistemas', 3);
+-- 10 CICLO
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('HU200', 'Idioma Extranjero', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('HU300', 'Actividades Diversas I', 1);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('HU400', 'Prácticas Pre-Profesionales', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI035', 'Proyecto de Tesis en Ingeniería de Sistemas II', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI055', 'Gestión de Proyectos', 2);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI075', 'Auditoría de Sistemas', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI085', 'Aplicación de Negocios Electrónicos', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI095', 'Ingeniería Empresarial', 3);
+
 
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BIC01','100', '01'); --fk = 10001 ; pk = BIC0110001
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BMA01','100', '01');
