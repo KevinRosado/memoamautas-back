@@ -80,13 +80,13 @@ insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI604',
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI605','Arquitectura Empresarial',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI607','Arquitectura Computacional y Redes',3);
 -- 7 CICLO
-insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE703', 'Sistemas Integrados Empresariales', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE709', 'Sistemas de Calidad', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI701', 'Modelado Sistémico y Simulación', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI702', 'Taller de Dinámica de Sistemas', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI704', 'Gestión de la Ingeniería de Sistemas', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI705', 'Estándares de la Ingeniería de Sistemas', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI707', 'Ingeniería de Sofware', 3);
+insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE703', 'Sistemas Integrados Empresariales', 3);
 -- 8 CICLO
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE801', 'Planeamiento y Gestión Estratégica', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE803', 'Sistemas Analíticos', 2);
@@ -123,6 +123,8 @@ insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqu
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI203','101', '01');
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI207','101', '01');
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI201','101', '01');
+
+/*
 insert into memo_amautas.modulo (id_modulo, tema_modulo, cod_curso, orden) values ('20000000', 'Fundamentos de Programación', '10000000',1);
 insert into memo_amautas.modulo (id_modulo, tema_modulo, cod_curso, orden) values ('20000001', 'Instrucciones de Entrada-Salida', '10000000',2);
 insert into memo_amautas.modulo (id_modulo, tema_modulo, cod_curso, orden) values ('20000002', 'Instruccciones lógicas', '10000000',3);
