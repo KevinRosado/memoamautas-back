@@ -11,6 +11,15 @@ insert into memo_amautas.valor_etiqueta values ('100','Primer Ciclo');
 insert into memo_amautas.valor_etiqueta values ('101','Segundo Ciclo');
 insert into memo_amautas.valor_etiqueta values ('102','Tercer Ciclo');
 insert into memo_amautas.valor_etiqueta values ('103','Cuarto Ciclo');
+--Ciclos añadidos
+insert into memo_amautas.valor_etiqueta values ('104','Quinto Ciclo');
+insert into memo_amautas.valor_etiqueta values ('105','Sexto Ciclo');
+insert into memo_amautas.valor_etiqueta values ('106','Séptimo Ciclo');
+insert into memo_amautas.valor_etiqueta values ('107','Octavo Ciclo');
+insert into memo_amautas.valor_etiqueta values ('108','Noveno Ciclo');
+insert into memo_amautas.valor_etiqueta values ('109','Décimo Ciclo');
+
+--Departamentos
 insert into memo_amautas.valor_etiqueta values ('200', 'Ciencias Básicas');
 insert into memo_amautas.valor_etiqueta values ('201', 'Sistemas y Telemática');
 insert into memo_amautas.valor_etiqueta values ('202', 'Humanidades y Ciencias Sociales');
@@ -26,20 +35,36 @@ insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('102'
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('102','02');
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('103','01');
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('103','02');
+
+--Ciclos Sistemas e Industrial añadidos
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('104','01');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('104','02');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('105','01');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('105','02');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('106','01');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('106','02');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('107','01');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('107','02');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('108','01');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('108','02');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('109','01');
+insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('109','02');
+
+--Departamentos relacionados
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('200','04');
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('201','04');
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('202','04');
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('203','04');
 insert into memo_amautas.etiqueta (cod_etiqueta, cod_tipo_etiqueta) values('204','04');
 
--- 1 CICLO
+-- 1 CICLO SISTEMAS
 insert into memo_amautas.curso values ('BIC01','Introduccion a la Computacion',2);
 insert into memo_amautas.curso values ('BMA01', 'Calculo Diferencial', 5);
 insert into memo_amautas.curso values ('FB101','Geometría Analítica',3);
 insert into memo_amautas.curso values ('BRN01','Redacción y Comunicación',2);
 insert into memo_amautas.curso values ('SI101','Introducción a la Ingeniería de Sistemas',3);
 insert into memo_amautas.curso values ('BQU01', 'Química I', 5);
--- 2 CICLO
+-- 2 CICLO SISTEMAS
 insert into memo_amautas.curso values ('BMA02','Cálculo Integral',5);
 insert into memo_amautas.curso values ('BMA03', 'Álgebra Lineal', 4);
 insert into memo_amautas.curso values ('BEF01', 'Ética y Filosofía', 2);
@@ -47,7 +72,7 @@ insert into memo_amautas.curso values ('SI205', 'Algoritmia y Estructura de Dato
 insert into memo_amautas.curso values ('SI203', 'Teoría y Ciencia de Sistemas', 3);
 insert into memo_amautas.curso values ('SI207', 'Sistemas Biológicos y Ecológicos', 2);
 insert into memo_amautas.curso values ('SI201', 'Psicología Sistémica', 3);
--- 3 CICLO
+-- 3 CICLO SISTEMAS
 insert into memo_amautas.curso values ('SI302', 'Programacion Orientada a Objetos', 3);
 insert into memo_amautas.curso values ('BFI01', 'Física I', 5);
 insert into memo_amautas.curso values ('HU301', 'Metodología de la Investigación', 3);
@@ -55,7 +80,7 @@ insert into memo_amautas.curso values ('FB303', 'Cálculo Multivariable', 5);
 insert into memo_amautas.curso values ('SI301', 'Teoría y Ciencia de Sistemas Aplicada', 3);
 insert into memo_amautas.curso values ('FB301', 'Matemática Discreta', 3);
 insert into memo_amautas.curso values ('FB305', 'Estadística y Probabilidades', 3);
--- 4 CICLO
+-- 4 CICLO SISTEMAS
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI403','Metodología de Sistemas Blandos',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB401','Fisica II',5);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI405','Modelado Conceptual de Datos',3);
@@ -63,7 +88,7 @@ insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB403',
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB405','Estadística Aplicada',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('HU102','Desarrollo Personal',2);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB402','Calculo Numérico',3);
--- 5 CICLO
+-- 5 CICLO SISTEMAS
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('BEG01','Economía General',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('BRN01','Realidad Nacional, Constitución y Derechos Humanos',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('FB501','Matematica Aplicada',3);
@@ -71,7 +96,7 @@ insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('GE501',
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI503','Ingeniería de Procesos',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI501','Investigación de Operaciones I',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI505','Diseño de Base de Datos',3);
--- 6 CICLO
+-- 6 CICLO SISTEMAS
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('GE605','Sistema y Gestión Financiera',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI601','Investigación de Operaciones II',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI602','Dinamica de Sistemas',3);
@@ -79,7 +104,7 @@ insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI603',
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI604','Analisis y Diseño de Sistemas',4);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI605','Arquitectura Empresarial',3);
 insert into memo_amautas.curso (id_curso,nombre_curso,creditos) values ('SI607','Arquitectura Computacional y Redes',3);
--- 7 CICLO
+-- 7 CICLO SISTEMAS
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE709', 'Sistemas de Calidad', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI701', 'Modelado Sistémico y Simulación', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI702', 'Taller de Dinámica de Sistemas', 2);
@@ -87,20 +112,20 @@ insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI704
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI705', 'Estándares de la Ingeniería de Sistemas', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI707', 'Ingeniería de Sofware', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE703', 'Sistemas Integrados Empresariales', 3);
--- 8 CICLO
+-- 8 CICLO SISTEMAS
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE801', 'Planeamiento y Gestión Estratégica', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE803', 'Sistemas Analíticos', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI801', 'Modelos del Sistema Viable', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI805', 'Integración de Sistemas', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI806', 'Desarrollo Adaptativo e Integrado del Software', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI807', 'Sistemas de Inteligencia de Negocio', 3);
--- 9 CICLO
+-- 9 CICLO SISTEMAS
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('GE902', 'Diseño y Evaluación de Proyectos', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI901', 'Proyectos de Tesis en Ingeniería de Sistemas I', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI902', 'Ingeniería de Sistemas de Servicio', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI903', 'Implementación de Sistemas', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI904', 'Seguridad de Sistemas', 3);
--- 10 CICLO
+-- 10 CICLO SISTEMAS
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('HU200', 'Idioma Extranjero', 2);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('HU300', 'Actividades Diversas I', 1);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('HU400', 'Prácticas Pre-Profesionales', 2);
@@ -109,6 +134,26 @@ insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI055
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI075', 'Auditoría de Sistemas', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI085', 'Aplicación de Negocios Electrónicos', 3);
 insert into memo_amautas.curso (id_curso, nombre_curso, creditos) values ('SI095', 'Ingeniería Empresarial', 3);
+
+--1 CICLO INDUSTRIAL
+
+--2 CICLO INDUSTRIAL
+
+--3 CICLO INDUSTRIAL
+
+--4 CICLO INDUSTRIAL
+
+--5 CICLO INDUSTRIAL
+
+--6 CICLO INDUSTRIAL
+
+--7 CICLO INDUSTRIAL
+
+--8 CICLO INDUSTRIAL
+
+--9 CICLO INDUSTRIAL
+
+--10 CICLO INDUSTRIAL
 
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BIC01','100', '01'); --fk = 10001 ; pk = BIC0110001
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BMA01','100', '01');
@@ -123,6 +168,69 @@ insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqu
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI203','101', '01');
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI207','101', '01');
 insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI201','101', '01');
+--Relaciones añadidas
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI302', '102', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BFI01', '102', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('HU301', '102', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('FB303', '102', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI301', '102', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('FB301', '102', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('FB305', '102', '01');
+
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI403','103', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('FB401','103', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI405','103', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('FB403','103', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('FB405','103', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('HU102','103', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('FB402','103', '01');
+
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BEG01','104', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('BRN01','104', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('FB501','104', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('GE501','104', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI503','104', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI501','104', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI505','104', '01');
+
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('GE605','105', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI601','105', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI602','105', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI603','105', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI604','105', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI605','105', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI607','105', '01');
+
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('GE709', '106', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI701', '106', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI702', '106', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI704', '106', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI705', '106', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI707', '106', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('GE703', '106', '01');
+
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('GE801', '107', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('GE803', '107', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI801', '107', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI805', '107', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI806', '107', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI807', '107', '01');
+
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('GE902', '108', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI901', '108', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI902', '108', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI903', '108', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI904', '108', '01');
+
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('HU200', '109', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('HU300', '109', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('HU400', '109', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI035', '109', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI055', '109', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI075', '109', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI085', '109', '01');
+insert into memo_amautas.etiqueta_curso (cod_curso, cod_etiqueta, cod_tipo_etiqueta) values ('SI095', '109', '01');
+
 
 /*
 insert into memo_amautas.modulo (id_modulo, tema_modulo, cod_curso, orden) values ('20000000', 'Fundamentos de Programación', '10000000',1);
