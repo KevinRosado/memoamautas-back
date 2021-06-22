@@ -55,9 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().requestMatchers().antMatchers("/memo/**")
                 .and().authorizeRequests()
                     .antMatchers(HttpMethod.POST, "/memo/login","/memo/register").permitAll()
-                    .antMatchers(HttpMethod.GET, "/course/**").permitAll()
-                    .antMatchers(HttpMethod.GET, "/decks/**").permitAll()
-                    .antMatchers("/memo/**").permitAll()
+                    .antMatchers(HttpMethod.GET, "/course/**").hasAnyRole("student", "teacher")
+                    .antMatchers(HttpMethod.GET, "/decks/**").hasAnyRole("student", "teacher")
                 .anyRequest().authenticated()
                 .and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
